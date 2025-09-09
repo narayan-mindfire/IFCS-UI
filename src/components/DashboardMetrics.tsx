@@ -45,7 +45,7 @@ const DashboardMetrics: React.FC = () => {
   };
 
   return (
-    <div className="relative bg-white rounded-xl shadow-lg mt-10 overflow-hidden">
+    <div className="relative bg-white rounded-xl shadow-lg mt-10">
       <button
         onClick={prevPage}
         className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors"

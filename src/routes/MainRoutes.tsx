@@ -1,7 +1,14 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "../pages/auth/Login";
-import Dashboard from "../pages/auth/Dashboard";
+import Dashboard from "../pages/main-pages/Dashboard";
 import Layout from "../components/Layout";
+import Flight from "../pages/main-pages/Flight";
+import FlightList from "../pages/flight/FlightList";
+import GalleyPlanner from "../pages/main-pages/GalleyPlanner";
+import MealPlanner from "../pages/main-pages/MealPlanner";
+import Compliance from "../pages/main-pages/Compliance";
+import Reports from "../pages/main-pages/Reports";
+import Setup from "../pages/main-pages/Setup";
 
 function MainRoutes() {
   return (
@@ -12,14 +19,14 @@ function MainRoutes() {
 
       <Route element={<Layout />}>
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/flights" element={<h1>Flights Page</h1>} />
-        <Route path="/galley-planner" element={<h1>Galley Planner</h1>} />
-        <Route path="/meal-planner" element={<h1>Meal Planner</h1>} />
-        <Route path="/compliance" element={<h1>Compliance</h1>} />
-        <Route path="/reports" element={<h1>Reports</h1>} />
-        <Route path="/setup" element={<h1>Setup</h1>} />
+        <Route path="/flights" element={<Flight />} />
+        <Route path="/galley-planner" element={<GalleyPlanner />} />
+        <Route path="/meal-planner" element={<MealPlanner />} />
+        <Route path="/compliance" element={<Compliance />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/setup" element={<Setup />} />
       </Route>
-
+      <Route path="/flight-list" element={<FlightList />} />
       <Route path="*" element={<h1>404 - Page Not Found</h1>} />
     </Routes>
   );

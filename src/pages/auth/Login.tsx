@@ -37,7 +37,7 @@ const Login: React.FC = () => {
                 <input
                   type="text"
                   id="login-name"
-                  className="w-full rounded-md border border-gray-300  bg-[var(--backgroundLight)] p-3"
+                  className="w-full h-10 rounded-md border border-gray-300  bg-[var(--backgroundLight)] p-3"
                 />
               </div>
               <div className="mb-5">
@@ -50,7 +50,7 @@ const Login: React.FC = () => {
                 <input
                   type="password"
                   id="password"
-                  className="w-full rounded-md border border-gray-300  bg-[var(--backgroundLight)] p-3"
+                  className="w-full h-10 rounded-md border border-gray-300  bg-[var(--backgroundLight)] p-3"
                 />
               </div>
               <a

@@ -32,7 +32,7 @@ const FlightCard: React.FC<FlightCardProps> = ({
       <div className="flex items-center justify-between">
         <div className="text-center">
           <p className="text-sm text-gray-600">{departureTime}</p>
-          <p className="text-3xl font-bold">{departureAirport}</p>
+        <p className="text-3xl font-bold">{departureAirport}</p>
         </div>
 
         <div className="relative flex-1 mx-2 h-8">
