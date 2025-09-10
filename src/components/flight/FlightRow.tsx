@@ -59,6 +59,7 @@ const FlightRow: React.FC<Flight> = ({
   pax,
 }) => {
   const logoUrl = `https://content.airhex.com/content/logos/airlines_${airlineCode}_100_100_s.png`;
+
   const getStatusClasses = (status: string) => {
     switch (status.toLowerCase()) {
       case "scheduled":
@@ -78,8 +79,9 @@ const FlightRow: React.FC<Flight> = ({
   const [open, setOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+
   const handleFlightDetails = () => {
-    setOpen(false); // close dropdown
+    setOpen(false);
     navigate(`/flight-details/${flightNumber}`);
   };
 
@@ -94,31 +96,40 @@ const FlightRow: React.FC<Flight> = ({
   }, []);
 
   return (
-    <div className="grid grid-cols-20 items-center border-b border-gray-200 py-3 text-sm hover:bg-gray-50 transition-colors">
+    <div className="grid grid-cols-20 items-center border-b border-gray-200 py-4 text-base hover:bg-gray-50 transition-colors">
       <div className="col-span-1 flex justify-center px-2">
         <img
           src={logoUrl}
           alt={airlineCode}
-          className="h-8 w-8 object-contain"
+          className="h-10 w-10 object-contain"
         />
       </div>
-      <div className="col-span-1 text-center px-2 font-medium">{route}</div>
-      <div className="col-span-1 text-center px-2 font-bold text-blue-400">
+
+      <div className="col-span-1 text-center px-2 font-medium text-lg">
+        {route}
+      </div>
+
+      <div className="col-span-1 text-center px-2 font-bold text-xl text-blue-500">
         {flightNumber}
       </div>
+
       <div className="col-span-1 text-center px-2">{type}</div>
+
       <div className="col-span-1 text-center px-2">{date}</div>
+
       <div className="col-span-1 text-center px-2">
-        <div className="text-sm font-medium">{departure}</div>
-        <div className="text-xs text-gray-500">{depStation}</div>
+        <div className="text-lg font-medium">{departure}</div>
+        <div className="text-sm text-gray-500">{depStation}</div>
       </div>
+
       <div className="col-span-1 text-center px-2">
-        <div className="text-sm font-medium">{arrival}</div>
-        <div className="text-xs text-gray-500">{arrStation}</div>
+        <div className="text-lg font-medium">{arrival}</div>
+        <div className="text-sm text-gray-500">{arrStation}</div>
       </div>
-      <div className="col-span-1 text-center px-2">
+
+      <div className="col-span-1 text-center px-0">
         <span
-          className={`text-xs px-2 py-1 rounded-full font-medium ${getStatusClasses(
+          className={`text-sm px-3 py-1 rounded-full font-semibold ${getStatusClasses(
             status
           )}`}
         >
@@ -127,55 +138,55 @@ const FlightRow: React.FC<Flight> = ({
       </div>
 
       <div className="col-span-1 text-center px-2">
-        <div className="text-sm font-medium">{acType}</div>
-        <div className="text-xs text-gray-500">{acReg}</div>
+        <div className="text-lg font-medium">{acType}</div>
+        <div className="text-sm text-gray-500">{acReg}</div>
       </div>
-      <div className="col-span-1 text-center px-2 text-sm">{groundTime}</div>
 
-      <div className="col-span-1 text-center px-2 text-sm">{plan}</div>
+      <div className="col-span-1 text-center px-2 text-lg">{groundTime}</div>
 
-      <div className="col-span-1 text-center px-2 font-semibold text-lg">
+      <div className="col-span-1 text-center px-2 text-lg">{plan}</div>
+
+      <div className="col-span-1 text-center px-2 font-bold text-2xl text-gray-800">
         {paxTotal}
       </div>
+
       <div className="col-span-4 text-center px-2 ml-6">
-        <div className="grid grid-cols-2 gap-2">
-          <div className="bg-yellow-100 rounded p-1">
-            <div className="text-[10px] text-yellow-600 font-semibold">
+        <div className="grid grid-cols-2 gap-3">
+          <div className="bg-yellow-100 rounded p-2">
+            <div className="text-xs text-yellow-600 font-semibold">
               First Class
             </div>
-            <div className="text-sm font-bold text-gray-800">{pax.first}</div>
+            <div className="text-lg font-bold text-gray-800">{pax.first}</div>
           </div>
-          <div className="bg-blue-100 rounded p-1">
-            <div className="text-[10px] text-blue-400 font-semibold">
+          <div className="bg-blue-100 rounded p-2">
+            <div className="text-xs text-blue-600 font-semibold">
               Business Class
             </div>
-            <div className="text-sm font-bold text-gray-800">
+            <div className="text-lg font-bold text-gray-800">
               {pax.business}
             </div>
           </div>
-          <div className="bg-purple-100 rounded p-1">
-            <div className="text-[10px] text-purple-600 font-semibold">
+          <div className="bg-purple-100 rounded p-2">
+            <div className="text-xs text-purple-600 font-semibold">
               Premium Economy
             </div>
-            <div className="text-sm font-bold text-gray-800">{pax.premium}</div>
+            <div className="text-lg font-bold text-gray-800">{pax.premium}</div>
           </div>
-          <div className="bg-green-100 rounded p-1">
-            <div className="text-[10px] text-green-600 font-semibold">
-              Economy
-            </div>
-            <div className="text-sm font-bold text-gray-800">{pax.economy}</div>
+          <div className="bg-green-100 rounded p-2">
+            <div className="text-xs text-green-600 font-semibold">Economy</div>
+            <div className="text-lg font-bold text-gray-800">{pax.economy}</div>
           </div>
         </div>
       </div>
 
-      <div className="col-span-4 flex gap-3 justify-center text-gray-400 px-2">
+      <div className="col-span-4 flex gap-4 justify-center text-gray-500 px-2 text-xl">
         <FontAwesomeIcon
           icon={faExclamationTriangle}
           className="hover:text-yellow-500 cursor-pointer transition-colors"
         />
         <FontAwesomeIcon
           icon={faUtensils}
-          className="hover:text-blue-300 cursor-pointer transition-colors"
+          className="hover:text-blue-400 cursor-pointer transition-colors"
         />
         <FontAwesomeIcon
           icon={faClipboardList}
@@ -187,7 +198,7 @@ const FlightRow: React.FC<Flight> = ({
         />
         <FontAwesomeIcon
           icon={faPlane}
-          className="hover:text-blue-400 cursor-pointer transition-colors"
+          className="hover:text-blue-500 cursor-pointer transition-colors"
         />
         <div className="relative" ref={menuRef}>
           <FontAwesomeIcon
@@ -196,13 +207,13 @@ const FlightRow: React.FC<Flight> = ({
             onClick={() => setOpen((prev) => !prev)}
           />
           {open && (
-            <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-fadeIn">
-              <ul className="text-sm text-gray-700">
+            <div className="absolute right-0 mt-2 w-44 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-fadeIn">
+              <ul className="text-base text-gray-700">
                 <li
                   className="px-4 py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer"
                   onClick={handleFlightDetails}
                 >
-                  <FontAwesomeIcon icon={faEye} className="text-blue-300" />
+                  <FontAwesomeIcon icon={faEye} className="text-blue-400" />
                   Flight Details
                 </li>
                 <li className="px-4 py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer">
@@ -224,4 +235,5 @@ const FlightRow: React.FC<Flight> = ({
     </div>
   );
 };
+
 export default FlightRow;
