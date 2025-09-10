@@ -9,6 +9,7 @@ import MealPlanner from "../pages/main-pages/MealPlanner";
 import Compliance from "../pages/main-pages/Compliance";
 import Reports from "../pages/main-pages/Reports";
 import Setup from "../pages/main-pages/Setup";
+import FlightDetails from "../pages/flight/FlightDetails";
 
 function MainRoutes() {
   return (
@@ -27,6 +28,8 @@ function MainRoutes() {
         <Route path="/setup" element={<Setup />} />
       </Route>
       <Route path="/flight-list" element={<FlightList />} />
+      <Route path="/flight-details/:flightNumber" element={<FlightDetails />} />
+
       <Route path="*" element={<h1>404 - Page Not Found</h1>} />
     </Routes>
   );

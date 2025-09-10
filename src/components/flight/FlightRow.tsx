@@ -1,3 +1,6 @@
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlane,
@@ -6,6 +9,9 @@ import {
   faSuitcaseRolling,
   faExclamationTriangle,
   faCog,
+  faEye,
+  faHistory,
+  faPen,
 } from "@fortawesome/free-solid-svg-icons";
 
 interface PaxData {
@@ -69,6 +75,24 @@ const FlightRow: React.FC<Flight> = ({
     }
   };
 
+  const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
+  const handleFlightDetails = () => {
+    setOpen(false); // close dropdown
+    navigate(`/flight-details/${flightNumber}`);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className="grid grid-cols-20 items-center border-b border-gray-200 py-3 text-sm hover:bg-gray-50 transition-colors">
       <div className="col-span-1 flex justify-center px-2">
@@ -113,22 +137,34 @@ const FlightRow: React.FC<Flight> = ({
       <div className="col-span-1 text-center px-2 font-semibold text-lg">
         {paxTotal}
       </div>
-      <div className="col-span-4 grid grid-cols-4 gap-1 px-2">
-        <div className="text-center">
-          <div className="text-xs text-gray-500">F</div>
-          <div className="text-sm font-medium">{pax.first}</div>
-        </div>
-        <div className="text-center">
-          <div className="text-xs text-gray-500">J</div>
-          <div className="text-sm font-medium">{pax.business}</div>
-        </div>
-        <div className="text-center">
-          <div className="text-xs text-gray-500">W</div>
-          <div className="text-sm font-medium">{pax.premium}</div>
-        </div>
-        <div className="text-center">
-          <div className="text-xs text-gray-500">Y</div>
-          <div className="text-sm font-medium">{pax.economy}</div>
+      <div className="col-span-4 text-center px-2">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-yellow-100 rounded p-1">
+            <div className="text-[10px] text-yellow-600 font-semibold">
+              First Class
+            </div>
+            <div className="text-sm font-bold text-gray-800">{pax.first}</div>
+          </div>
+          <div className="bg-blue-100 rounded p-1">
+            <div className="text-[10px] text-blue-600 font-semibold">
+              Business Class
+            </div>
+            <div className="text-sm font-bold text-gray-800">
+              {pax.business}
+            </div>
+          </div>
+          <div className="bg-purple-100 rounded p-1">
+            <div className="text-[10px] text-purple-600 font-semibold">
+              Premium Economy
+            </div>
+            <div className="text-sm font-bold text-gray-800">{pax.premium}</div>
+          </div>
+          <div className="bg-green-100 rounded p-1">
+            <div className="text-[10px] text-green-600 font-semibold">
+              Economy
+            </div>
+            <div className="text-sm font-bold text-gray-800">{pax.economy}</div>
+          </div>
         </div>
       </div>
 
@@ -153,10 +189,37 @@ const FlightRow: React.FC<Flight> = ({
           icon={faPlane}
           className="hover:text-blue-600 cursor-pointer transition-colors"
         />
-        <FontAwesomeIcon
-          icon={faCog}
-          className="text-red-500 hover:text-red-700 cursor-pointer transition-colors"
-        />
+        <div className="relative" ref={menuRef}>
+          <FontAwesomeIcon
+            icon={faCog}
+            className="text-red-500 hover:text-red-700 cursor-pointer transition-colors"
+            onClick={() => setOpen((prev) => !prev)}
+          />
+          {open && (
+            <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-fadeIn">
+              <ul className="text-sm text-gray-700">
+                <li
+                  className="px-4 py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer"
+                  onClick={handleFlightDetails}
+                >
+                  <FontAwesomeIcon icon={faEye} className="text-blue-500" />
+                  Flight Details
+                </li>
+                <li className="px-4 py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer">
+                  <FontAwesomeIcon icon={faPen} className="text-green-500" />
+                  Edit Flight
+                </li>
+                <li className="px-4 py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer">
+                  <FontAwesomeIcon
+                    icon={faHistory}
+                    className="text-purple-500"
+                  />
+                  Flight History
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

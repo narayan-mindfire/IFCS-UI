@@ -17,7 +17,7 @@ import galleyXplanner from "../../assets/logos/galleyXplanner.png";
 function FlightList() {
   return (
     <div>
-      <div className="bg-red w-full h-12 flex justify-between items-center px-6">
+      <div className="bg-blue-100 w-full h-14 flex justify-between items-center px-6">
         <div className="flex items-center">
           <Button to="/flights">back</Button>
         </div>
@@ -27,57 +27,85 @@ function FlightList() {
         </div>
       </div>
 
-      <div className="bg-red w-full h-16 flex justify-between items-center px-6 my-3">
-        <div className="flex flex-col ">
-          <h1>Flights</h1>
-          <div className="flex flex-row gap-4">
-            <div className="w-16 h-6 flex justify-center items-center bg-black text-white">
-              a
+      <div className="bg-white shadow-md rounded-lg w-full h-auto flex flex-col md:flex-row justify-between items-center px-6 py-4 gap-4">
+        {/* Left Section */}
+        <div className="flex flex-col w-full md:w-auto">
+          <h1 className="text-2xl font-bold text-gray-800 mb-2">Flights</h1>
+          <div className="flex flex-wrap gap-4">
+            {/* Station Dropdown */}
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 mb-1">
+                Station
+              </label>
+              <select className="w-40 px-3 py-2 border border-gray-300 rounded-lg shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option value="">Select Station</option>
+                <option value="YYZ">Toronto (YYZ)</option>
+                <option value="YUL">Montreal (YUL)</option>
+                <option value="YVR">Vancouver (YVR)</option>
+              </select>
             </div>
-            <div className="w-16 h-6 flex justify-center items-center bg-black text-white">
-              b
+
+            {/* Date Selector */}
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 mb-1">
+                Date
+              </label>
+              <input
+                type="date"
+                className="w-44 px-3 py-2 border border-gray-300 rounded-lg shadow-sm text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
             </div>
-            <div className="w-16 h-6 flex justify-center items-center bg-black text-white">
-              c
+
+            {/* Flight Search */}
+            <div>
+              <label className="block text-xs font-semibold text-gray-500 mb-1">
+                Search Flight
+              </label>
+              <input
+                type="text"
+                placeholder="Enter Flight No."
+                className="w-48 px-3 py-2 border border-gray-300 rounded-lg shadow-sm text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              />
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-14">
-          <div className="flex flex-col items-center justify-center">
-            <h1>94</h1>
-            <h3>Flights</h3>
+        {/* Right Section (Stats) */}
+        <div className="flex items-center gap-10 md:gap-14 w-full md:w-auto justify-around">
+          <div className="flex flex-col items-center">
+            <h1 className="text-xl font-bold text-gray-800">94</h1>
+            <h3 className="text-sm text-gray-500">Flights</h3>
             <FontAwesomeIcon
               icon={faPlane}
-              className="text-blue-400"
-              size="xl"
+              className="text-blue-500 mt-1"
+              size="lg"
             />
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <h1>0</h1>
-            <h3>Complete</h3>
+          <div className="flex flex-col items-center">
+            <h1 className="text-xl font-bold text-gray-800">0</h1>
+            <h3 className="text-sm text-gray-500">Complete</h3>
             <FontAwesomeIcon
               icon={faCheckCircle}
-              className="text-green-400"
-              size="xl"
+              className="text-green-500 mt-1"
+              size="lg"
             />
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <h1>0</h1>
-            <h3>In Progress</h3>
+          <div className="flex flex-col items-center">
+            <h1 className="text-xl font-bold text-gray-800">0</h1>
+            <h3 className="text-sm text-gray-500">In Progress</h3>
             <FontAwesomeIcon
               icon={faRotateRight}
-              className="text-yellow-400"
-              size="xl"
+              className="text-yellow-500 mt-1"
+              size="lg"
             />
           </div>
-          <div className="flex flex-col items-center justify-center">
-            <h1>94</h1>
-            <h3>Waiting</h3>
+          <div className="flex flex-col items-center">
+            <h1 className="text-xl font-bold text-gray-800">94</h1>
+            <h3 className="text-sm text-gray-500">Waiting</h3>
             <FontAwesomeIcon
               icon={faClock}
-              className="text-blue-400"
-              size="xl"
+              className="text-blue-500 mt-1"
+              size="lg"
             />
           </div>
         </div>
@@ -102,7 +130,7 @@ function FlightList() {
           </div>
           <div className="col-span-5 flex items-center justify-center gap-2 py-4 border-r border-gray-700">
             <FontAwesomeIcon icon={faUsers} className="text-purple-400" />
-            <span>Passengers</span>
+            <span>PAX</span>
           </div>
           <div className="col-span-4 flex items-center justify-center gap-2 py-4">
             <FontAwesomeIcon icon={faCheckCircle} className="text-red-400" />
@@ -152,31 +180,26 @@ function FlightList() {
           <div className="col-span-1 text-center py-3 border-r border-gray-300">
             <div className="font-semibold">Total</div>
           </div>
-          <div className="col-span-4 grid grid-cols-4 text-center border-r border-gray-300">
+          <div className="col-span-4 grid grid-cols-1 text-center border-r border-gray-300">
             <div className="py-3 border-r border-gray-300">
-              <div className="font-semibold text-yellow-600">First Class</div>
-            </div>
-            <div className="py-3 border-r border-gray-300">
-              <div className="font-semibold text-blue-600">Business</div>
-            </div>
-            <div className="py-3 border-r border-gray-300">
-              <div className="font-semibold text-purple-600">Premium</div>
-            </div>
-            <div className="py-3">
-              <div className="font-semibold text-green-600">Economy</div>
+              <div className="font-semibold">Configuration</div>
             </div>
           </div>
 
           <div className="col-span-4 text-center py-3"></div>
         </div>
 
-        <div className="divide-y divide-gray-200 overflow-y-auto max-h-[600px] pb-10">
-          {flights.map((flight, idx) => (
-            <FlightRow key={idx} {...flight} />
+        <div className="divide-y divide-gray-400 overflow-y-auto max-h-[calc(100vh-14rem)]">
+          {flights.map((pair, idx) => (
+            <div key={idx} className="mb-4">
+              {pair.map((flight, subIdx) => (
+                <FlightRow key={subIdx} {...flight} />
+              ))}
+            </div>
           ))}
         </div>
       </div>
-      <footer className="w-full flex items-center bg-gray-400 h-10 fixed bottom-0 z-10">
+      <footer className="w-full flex items-center bg-gray-400 h-6 fixed bottom-0 z-10">
         <img src={galleyXplanner} alt="Bottom Logo" className="w-32" />
       </footer>
     </div>
