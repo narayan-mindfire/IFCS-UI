@@ -22,10 +22,10 @@ const FlightDeliveries = () => {
     <div className="w-400 h-full flex justify-between gap-4">
       <div className="w-72 bg-white rounded-xl shadow p-4 flex flex-col">
         <div className="flex items-center justify-between border-b pb-2 mb-2">
-          <h2 className="text-blue-600 font-semibold">Delivery:</h2>
+          <h2 className="text-blue-400 font-semibold">Delivery:</h2>
           <button
             onClick={addDelivery}
-            className="text-blue-600 hover:text-blue-800"
+            className="text-blue-400 hover:text-blue-800"
           >
             <FontAwesomeIcon icon={faPlus} size="lg" />
           </button>

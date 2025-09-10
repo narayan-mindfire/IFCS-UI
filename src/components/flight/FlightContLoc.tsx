@@ -11,7 +11,7 @@ const FlightContLoc = () => {
         <button
           className={`px-8 py-3 rounded-t-lg mx-1 ${
             activeContentTab === "static"
-              ? "bg-blue-500 text-white"
+              ? "bg-blue-300 text-white"
               : "bg-gray-200 text-gray-600"
           }`}
           onClick={() => setActiveContentTab("static")}
@@ -21,7 +21,7 @@ const FlightContLoc = () => {
         <button
           className={`px-8 py-3 rounded-t-lg mx-1 ${
             activeContentTab === "dynamic"
-              ? "bg-blue-500 text-white"
+              ? "bg-blue-300 text-white"
               : "bg-gray-200 text-gray-600 opacity-60"
           }`}
           disabled
@@ -31,7 +31,7 @@ const FlightContLoc = () => {
         <button
           className={`px-8 py-3 rounded-t-lg mx-1 ${
             activeContentTab === "deadhead"
-              ? "bg-blue-500 text-white"
+              ? "bg-blue-300 text-white"
               : "bg-gray-200 text-gray-600 opacity-60"
           }`}
           disabled
@@ -51,7 +51,7 @@ const FlightContLoc = () => {
                 key={item.id}
                 className={`p-3 cursor-pointer border-b hover:bg-gray-50 ${
                   selectedItem.id === item.id
-                    ? "bg-blue-100 border-l-4 border-l-blue-500"
+                    ? "bg-blue-100 border-l-4 border-l-blue-300"
                     : ""
                 }`}
                 onClick={() => setSelectedItem(item)}
@@ -65,7 +65,7 @@ const FlightContLoc = () => {
         <div className="flex-[2] space-y-4">
           <div className="bg-white rounded-lg shadow-sm">
             <div className="p-4 border-b">
-              <h2 className="text-lg font-medium text-blue-500">Details</h2>
+              <h2 className="text-lg font-medium text-blue-300">Details</h2>
             </div>
             <div className="p-4">
               <h3 className="font-medium text-gray-800 mb-2">
@@ -82,7 +82,7 @@ const FlightContLoc = () => {
 
           <div className="bg-white rounded-lg shadow-sm">
             <div className="p-4 border-b">
-              <h2 className="text-lg font-medium text-blue-500">
+              <h2 className="text-lg font-medium text-blue-300">
                 Galley Locations
               </h2>
             </div>

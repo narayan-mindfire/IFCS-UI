@@ -113,12 +113,6 @@ const FlightLabels = () => {
                 </div>
               ))}
             </div>
-
-            <div className="mt-6 flex justify-center">
-              <div className="w-8 h-8 border-2 border-gray-300 rounded flex items-center justify-center">
-                <div className="w-2 h-4 bg-gray-400"></div>
-              </div>
-            </div>
           </div>
 
           <div className="bg-white rounded-lg p-4">
@@ -151,12 +145,6 @@ const FlightLabels = () => {
                   </div>
                 </div>
               ))}
-            </div>
-
-            <div className="mt-6 flex justify-center">
-              <div className="w-8 h-8 border-2 border-gray-300 rounded flex items-center justify-center">
-                <div className="w-2 h-4 bg-gray-400"></div>
-              </div>
             </div>
           </div>
         </div>

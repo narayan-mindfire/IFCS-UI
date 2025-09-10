@@ -19,7 +19,7 @@ function FlightList() {
     <div>
       <div className="bg-blue-100 w-full h-14 flex justify-between items-center px-6">
         <div className="flex items-center">
-          <Button className="bg-blue-500" to="/flights">
+          <Button className="bg-blue-300" to="/flights">
             back
           </Button>
         </div>
@@ -74,7 +74,7 @@ function FlightList() {
             <h3 className="text-sm text-gray-500">Flights</h3>
             <FontAwesomeIcon
               icon={faPlane}
-              className="text-blue-500 mt-1"
+              className="text-blue-300 mt-1"
               size="lg"
             />
           </div>
@@ -101,7 +101,7 @@ function FlightList() {
             <h3 className="text-sm text-gray-500">Waiting</h3>
             <FontAwesomeIcon
               icon={faClock}
-              className="text-blue-500 mt-1"
+              className="text-blue-300 mt-1"
               size="lg"
             />
           </div>

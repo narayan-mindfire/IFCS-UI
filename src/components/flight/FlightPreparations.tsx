@@ -110,7 +110,7 @@ function FlightPreparations() {
           />
           <button
             onClick={handlePrint}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-500 cursor-pointer text-white rounded-lg hover:bg-blue-700 transition"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-300 cursor-pointer text-white rounded-lg hover:bg-blue-700 transition"
           >
             <FontAwesomeIcon icon={faPrint} />
             Print
@@ -170,7 +170,7 @@ function FlightPreparations() {
                     />
                     <FontAwesomeIcon
                       icon={faTruck}
-                      className="cursor-pointer text-blue-500"
+                      className="cursor-pointer text-blue-300"
                     />
                     <FontAwesomeIcon
                       icon={faInfoCircle}

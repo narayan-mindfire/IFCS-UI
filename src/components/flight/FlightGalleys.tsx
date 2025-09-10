@@ -35,7 +35,7 @@ const FlightGalleys = () => {
   return (
     <div className="flex w-400 bg-gray-200 gap-4 p-4">
       <div className="w-72 rounded-xl bg-white shadow p-4">
-        <h2 className="text-blue-600 font-semibold mb-3">Prepared By:</h2>
+        <h2 className="text-blue-400 font-semibold mb-3">Prepared By:</h2>
         <div className="overflow-y-auto max-h-96 space-y-2">
           {preparedBy.map((prep, idx) => (
             <div
@@ -49,7 +49,7 @@ const FlightGalleys = () => {
       </div>
 
       <div className="flex-1 bg-white rounded-xl shadow p-4">
-        <h2 className="text-blue-600 font-semibold mb-3">Items</h2>
+        <h2 className="text-blue-400 font-semibold mb-3">Items</h2>
         <div className="overflow-y-auto max-h-96">
           <table className="w-full text-sm">
             <thead>
@@ -76,7 +76,7 @@ const FlightGalleys = () => {
         <button className="w-full bg-gray-200 text-gray-700 py-2 rounded-lg hover:bg-gray-300 transition">
           Show All
         </button>
-        <button className="w-full flex items-center justify-center gap-2 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition">
+        <button className="w-full flex items-center justify-center gap-2 bg-blue-400 text-white py-2 rounded-lg hover:bg-blue-700 transition">
           <FontAwesomeIcon icon={faBoxesPacking} />
           View Galleys
         </button>

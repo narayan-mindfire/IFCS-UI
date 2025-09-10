@@ -103,7 +103,7 @@ const FlightRow: React.FC<Flight> = ({
         />
       </div>
       <div className="col-span-1 text-center px-2 font-medium">{route}</div>
-      <div className="col-span-1 text-center px-2 font-bold text-blue-600">
+      <div className="col-span-1 text-center px-2 font-bold text-blue-400">
         {flightNumber}
       </div>
       <div className="col-span-1 text-center px-2">{type}</div>
@@ -146,7 +146,7 @@ const FlightRow: React.FC<Flight> = ({
             <div className="text-sm font-bold text-gray-800">{pax.first}</div>
           </div>
           <div className="bg-blue-100 rounded p-1">
-            <div className="text-[10px] text-blue-600 font-semibold">
+            <div className="text-[10px] text-blue-400 font-semibold">
               Business Class
             </div>
             <div className="text-sm font-bold text-gray-800">
@@ -175,7 +175,7 @@ const FlightRow: React.FC<Flight> = ({
         />
         <FontAwesomeIcon
           icon={faUtensils}
-          className="hover:text-blue-500 cursor-pointer transition-colors"
+          className="hover:text-blue-300 cursor-pointer transition-colors"
         />
         <FontAwesomeIcon
           icon={faClipboardList}
@@ -187,7 +187,7 @@ const FlightRow: React.FC<Flight> = ({
         />
         <FontAwesomeIcon
           icon={faPlane}
-          className="hover:text-blue-600 cursor-pointer transition-colors"
+          className="hover:text-blue-400 cursor-pointer transition-colors"
         />
         <div className="relative" ref={menuRef}>
           <FontAwesomeIcon
@@ -202,7 +202,7 @@ const FlightRow: React.FC<Flight> = ({
                   className="px-4 py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer"
                   onClick={handleFlightDetails}
                 >
-                  <FontAwesomeIcon icon={faEye} className="text-blue-500" />
+                  <FontAwesomeIcon icon={faEye} className="text-blue-300" />
                   Flight Details
                 </li>
                 <li className="px-4 py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer">
