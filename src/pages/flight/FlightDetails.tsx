@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { flights } from "../../const/flightData";
+import FlightPreparations from "../../components/flight/FlightPreparations";
 
 const tabs = [
   "Details",
@@ -127,7 +128,7 @@ function FlightDetails() {
         {activeTab !== "Details" && (
           <div className="flex items-center justify-center h-full">
             <p className="text-gray-500 italic text-sm sm:text-lg">
-              {activeTab} content will go here...
+              {activeTab === "Preparations" && <FlightPreparations />}
             </p>
           </div>
         )}
