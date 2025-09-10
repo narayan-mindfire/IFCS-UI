@@ -137,7 +137,7 @@ const FlightRow: React.FC<Flight> = ({
       <div className="col-span-1 text-center px-2 font-semibold text-lg">
         {paxTotal}
       </div>
-      <div className="col-span-4 text-center px-2">
+      <div className="col-span-4 text-center px-2 ml-6">
         <div className="grid grid-cols-2 gap-2">
           <div className="bg-yellow-100 rounded p-1">
             <div className="text-[10px] text-yellow-600 font-semibold">

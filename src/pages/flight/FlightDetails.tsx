@@ -32,7 +32,7 @@ function FlightDetails() {
   }
 
   return (
-    <div className="p-4 sm:p-6">
+    <div className="p-4 sm:py-0">
       <nav className="w-full bg-white h-16 flex items-center justify-between ">
         <Button className="bg-blue-500" to="/flight-list">
           <div className="flex flex-row justify-center items-center">
