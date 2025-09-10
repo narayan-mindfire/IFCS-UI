@@ -12,7 +12,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef } from "react";
 import { samplePreparations } from "../../const/samplePreparations";
-import Button from "../Button";
 
 function FlightPreparations() {
   const tableRef = useRef<HTMLDivElement>(null);
