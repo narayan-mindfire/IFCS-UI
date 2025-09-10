@@ -9,6 +9,7 @@ import FlightFoodOrder from "../../components/flight/FlightFoodOrder";
 import FlightGalleys from "../../components/flight/FlightGalleys";
 import FlightContLoc from "../../components/flight/FlightContLoc";
 import FlightDeliveries from "../../components/flight/FlightDeliveries";
+import FlightLabels from "../../components/flight/FlightLabels";
 
 const tabs = [
   "DETAILS",
@@ -148,6 +149,7 @@ function FlightDetails() {
               {activeTab === "GALLEYS" && <FlightGalleys />}
               {activeTab === "CONTENT LOC'N" && <FlightContLoc />}
               {activeTab === "DELIVERIES" && <FlightDeliveries />}
+              {activeTab === "LABELS/REPORTS" && <FlightLabels />}
             </p>
           </div>
         )}
