@@ -19,7 +19,9 @@ function FlightList() {
     <div>
       <div className="bg-blue-100 w-full h-14 flex justify-between items-center px-6">
         <div className="flex items-center">
-          <Button to="/flights">back</Button>
+          <Button className="bg-blue-300" to="/flights">
+            back
+          </Button>
         </div>
 
         <div className="flex items-center gap-4">
@@ -28,11 +30,9 @@ function FlightList() {
       </div>
 
       <div className="bg-white shadow-md rounded-lg w-full h-auto flex flex-col md:flex-row justify-between items-center px-6 py-4 gap-4">
-        {/* Left Section */}
         <div className="flex flex-col w-full md:w-auto">
           <h1 className="text-2xl font-bold text-gray-800 mb-2">Flights</h1>
           <div className="flex flex-wrap gap-4">
-            {/* Station Dropdown */}
             <div>
               <label className="block text-xs font-semibold text-gray-500 mb-1">
                 Station
@@ -45,7 +45,6 @@ function FlightList() {
               </select>
             </div>
 
-            {/* Date Selector */}
             <div>
               <label className="block text-xs font-semibold text-gray-500 mb-1">
                 Date
@@ -56,7 +55,6 @@ function FlightList() {
               />
             </div>
 
-            {/* Flight Search */}
             <div>
               <label className="block text-xs font-semibold text-gray-500 mb-1">
                 Search Flight
@@ -70,14 +68,13 @@ function FlightList() {
           </div>
         </div>
 
-        {/* Right Section (Stats) */}
         <div className="flex items-center gap-10 md:gap-14 w-full md:w-auto justify-around">
           <div className="flex flex-col items-center">
             <h1 className="text-xl font-bold text-gray-800">94</h1>
             <h3 className="text-sm text-gray-500">Flights</h3>
             <FontAwesomeIcon
               icon={faPlane}
-              className="text-blue-500 mt-1"
+              className="text-blue-300 mt-1"
               size="lg"
             />
           </div>
@@ -104,7 +101,7 @@ function FlightList() {
             <h3 className="text-sm text-gray-500">Waiting</h3>
             <FontAwesomeIcon
               icon={faClock}
-              className="text-blue-500 mt-1"
+              className="text-blue-300 mt-1"
               size="lg"
             />
           </div>

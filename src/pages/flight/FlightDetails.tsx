@@ -9,6 +9,7 @@ import FlightFoodOrder from "../../components/flight/FlightFoodOrder";
 import FlightGalleys from "../../components/flight/FlightGalleys";
 import FlightContLoc from "../../components/flight/FlightContLoc";
 import FlightDeliveries from "../../components/flight/FlightDeliveries";
+import FlightLabels from "../../components/flight/FlightLabels";
 
 const tabs = [
   "DETAILS",
@@ -38,7 +39,7 @@ function FlightDetails() {
   return (
     <div className="p-4 sm:py-0">
       <nav className="w-full bg-white h-16 flex items-center justify-between ">
-        <Button className="bg-blue-500" to="/flight-list">
+        <Button className="bg-blue-300" to="/flight-list">
           <div className="flex flex-row justify-center items-center">
             <FontAwesomeIcon icon={faArrowLeft} className="text-white" />
             <p>Flights</p>
@@ -71,15 +72,15 @@ function FlightDetails() {
       </div>
 
       <div className="overflow-x-auto">
-        <div className="flex md:grid md:grid-cols-8 gap-2 bg-blue-600 rounded-lg shadow overflow-hidden min-w-max md:min-w-0">
+        <div className="flex md:grid md:grid-cols-8 gap-2 bg-blue-400 rounded-lg shadow overflow-hidden min-w-max md:min-w-0">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
               className={`flex-1 px-4 py-2 sm:py-3 text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
                 activeTab === tab
-                  ? "bg-blue-100 text-blue-600 shadow-md"
-                  : "text-white hover:bg-blue-500"
+                  ? "bg-blue-100 text-blue-400 shadow-md"
+                  : "text-white hover:bg-blue-300"
               }`}
             >
               {tab}
@@ -129,7 +130,7 @@ function FlightDetails() {
               <p className="text-xs sm:text-sm text-gray-600 mt-1">
                 <span className="font-medium text-yellow-600">F:</span>{" "}
                 {flight.pax.first} |{" "}
-                <span className="font-medium text-blue-600">C:</span>{" "}
+                <span className="font-medium text-blue-400">C:</span>{" "}
                 {flight.pax.business} |{" "}
                 <span className="font-medium text-purple-600">P:</span>{" "}
                 {flight.pax.premium} |{" "}
@@ -142,12 +143,13 @@ function FlightDetails() {
 
         {activeTab !== "DETAILS" && (
           <div className="flex items-center justify-center w-full h-full">
-            <p className="text-gray-500 italic text-sm sm:text-lg">
+            <p className="text-gray-500 text-sm sm:text-lg">
               {activeTab === "PREPARATIONS" && <FlightPreparations />}
               {activeTab === "FOOD ORDERS" && <FlightFoodOrder />}
               {activeTab === "GALLEYS" && <FlightGalleys />}
               {activeTab === "CONTENT LOC'N" && <FlightContLoc />}
               {activeTab === "DELIVERIES" && <FlightDeliveries />}
+              {activeTab === "LABELS/REPORTS" && <FlightLabels />}
             </p>
           </div>
         )}

@@ -11,10 +11,21 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
 import { samplePreparations } from "../../const/samplePreparations";
+import { flights } from "../../const/flightData";
+import GalleyLabel from "../GalleyLabel";
+import { useParams } from "react-router-dom";
+import ReactDOMServer from "react-dom/server";
 
 function FlightPreparations() {
   const tableRef = useRef<HTMLDivElement>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const { flightNumber } = useParams<{ flightNumber: string }>();
+
+  const filteredPreparations = samplePreparations.filter((p) =>
+    p.preparedBy.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const flight = flights.flat().find((f) => f.flightNumber === flightNumber);
 
   const handlePrint = () => {
     if (tableRef.current) {
@@ -44,9 +55,47 @@ function FlightPreparations() {
     }
   };
 
-  const filteredPreparations = samplePreparations.filter((p) =>
-    p.preparedBy.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const handlePrintQr = (prep: (typeof samplePreparations)[0]) => {
+    if (!flight) return;
+
+    const labelHtml = ReactDOMServer.renderToString(
+      <GalleyLabel preparation={prep} flight={flight} />
+    );
+
+    const printWindow = window.open("", "", "width=400,height=600");
+    if (printWindow) {
+      printWindow.document.write(`
+      <html>
+        <head>
+          <title>Galley Label</title>
+          <!-- Load Tailwind CSS -->
+          <script src="https://cdn.tailwindcss.com"></script>
+          <style>
+            body {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              height: 100vh;
+              margin: 0;
+              background: white;
+            }
+          </style>
+        </head>
+        <body>
+          ${labelHtml}
+          <script>
+            window.onload = function() {
+              window.print();
+              // uncomment if you want the window to auto-close
+              // window.close();
+            }
+          </script>
+        </body>
+      </html>
+    `);
+      printWindow.document.close();
+    }
+  };
 
   return (
     <div className="bg-white shadow rounded-lg p-4">
@@ -61,7 +110,7 @@ function FlightPreparations() {
           />
           <button
             onClick={handlePrint}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-500 cursor-pointer text-white rounded-lg hover:bg-blue-700 transition"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-300 cursor-pointer text-white rounded-lg hover:bg-blue-700 transition"
           >
             <FontAwesomeIcon icon={faPrint} />
             Print
@@ -108,6 +157,7 @@ function FlightPreparations() {
                     <FontAwesomeIcon
                       icon={faQrcode}
                       className="cursor-pointer"
+                      onClick={() => handlePrintQr(prep)} // ⬅️ print label
                     />
                     <FontAwesomeIcon
                       icon={faBoxOpen}
@@ -120,7 +170,7 @@ function FlightPreparations() {
                     />
                     <FontAwesomeIcon
                       icon={faTruck}
-                      className="cursor-pointer text-blue-500"
+                      className="cursor-pointer text-blue-300"
                     />
                     <FontAwesomeIcon
                       icon={faInfoCircle}
