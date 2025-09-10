@@ -8,13 +8,13 @@ import {
   faInfoCircle,
   faQrcode,
   faBoxOpen,
-  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { samplePreparations } from "../../const/samplePreparations";
 
 function FlightPreparations() {
   const tableRef = useRef<HTMLDivElement>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handlePrint = () => {
     if (tableRef.current) {
@@ -44,11 +44,15 @@ function FlightPreparations() {
     }
   };
 
+  const filteredPreparations = samplePreparations.filter((p) =>
+    p.preparedBy.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="bg-white shadow rounded-lg p-4">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-bold text-gray-700">
-          Flight Preparation: {samplePreparations.length}
+          Flight Preparation: {filteredPreparations.length}
         </h2>
         <div className="flex flex-row items-center gap-4">
           <FontAwesomeIcon
@@ -73,12 +77,23 @@ function FlightPreparations() {
                 <th className="px-3 py-2 text-left">Stowage</th>
                 <th className="px-3 py-2 text-left">Carrier</th>
                 <th className="px-3 py-2 text-left">Equipment</th>
-                <th className="px-3 py-2 text-left">Prepared By</th>
+                <th className="px-3 py-2 text-left">
+                  <div className="flex flex-col gap-1">
+                    <span>Prepared By</span>
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-400"
+                    />
+                  </div>
+                </th>
                 <th className="px-3 py-2 text-center no-print">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {samplePreparations.map((prep, idx) => (
+              {filteredPreparations.map((prep, idx) => (
                 <tr
                   key={idx}
                   className={`border-b ${
@@ -98,10 +113,6 @@ function FlightPreparations() {
                       icon={faBoxOpen}
                       className="cursor-pointer"
                     />
-                    <FontAwesomeIcon
-                      icon={faSearch}
-                      className="cursor-pointer"
-                    />
                     <FontAwesomeIcon icon={faLock} className="cursor-pointer" />
                     <FontAwesomeIcon
                       icon={faCheckCircle}
@@ -118,6 +129,14 @@ function FlightPreparations() {
                   </td>
                 </tr>
               ))}
+
+              {filteredPreparations.length === 0 && (
+                <tr>
+                  <td colSpan={5} className="text-center py-4 text-gray-500">
+                    No results found
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>

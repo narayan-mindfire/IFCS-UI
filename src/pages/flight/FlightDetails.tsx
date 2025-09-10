@@ -5,21 +5,25 @@ import FlightPreparations from "../../components/flight/FlightPreparations";
 import Button from "../../components/Button";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import FlightFoodOrder from "../../components/flight/FlightFoodOrder";
+import FlightGalleys from "../../components/flight/FlightGalleys";
+import FlightContLoc from "../../components/flight/FlightContLoc";
+import FlightDeliveries from "../../components/flight/FlightDeliveries";
 
 const tabs = [
-  "Details",
-  "Preparations",
-  "Food Order",
-  "Content Login",
-  "Galleys",
-  "Labels/Reports",
-  "Deliveries",
-  "Invoice",
+  "DETAILS",
+  "PREPARATIONS",
+  "FOOD ORDERS",
+  "CONTENT LOC'N",
+  "GALLEYS",
+  "LABELS/REPORTS",
+  "DELIVERIES",
+  "INVOICE",
 ];
 
 function FlightDetails() {
   const { flightNumber } = useParams<{ flightNumber: string }>();
-  const [activeTab, setActiveTab] = useState("Details");
+  const [activeTab, setActiveTab] = useState("DETAILS");
 
   const flight = flights.flat().find((f) => f.flightNumber === flightNumber);
 
@@ -32,7 +36,7 @@ function FlightDetails() {
   }
 
   return (
-    <div className="p-4 sm:p-6">
+    <div className="p-4 sm:py-0">
       <nav className="w-full bg-white h-16 flex items-center justify-between ">
         <Button className="bg-blue-500" to="/flight-list">
           <div className="flex flex-row justify-center items-center">
@@ -84,8 +88,8 @@ function FlightDetails() {
         </div>
       </div>
 
-      <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 min-h-[250px]">
-        {activeTab === "Details" && (
+      <div className="bg-white shadow-lg rounded-xl p-4 sm:p-6 min-w-full min-h-[250px]">
+        {activeTab === "DETAILS" && (
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 text-gray-800">
             <div>
               <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase">
@@ -136,10 +140,14 @@ function FlightDetails() {
           </div>
         )}
 
-        {activeTab !== "Details" && (
-          <div className="flex items-center justify-center h-full">
+        {activeTab !== "DETAILS" && (
+          <div className="flex items-center justify-center w-full h-full">
             <p className="text-gray-500 italic text-sm sm:text-lg">
-              {activeTab === "Preparations" && <FlightPreparations />}
+              {activeTab === "PREPARATIONS" && <FlightPreparations />}
+              {activeTab === "FOOD ORDERS" && <FlightFoodOrder />}
+              {activeTab === "GALLEYS" && <FlightGalleys />}
+              {activeTab === "CONTENT LOC'N" && <FlightContLoc />}
+              {activeTab === "DELIVERIES" && <FlightDeliveries />}
             </p>
           </div>
         )}
