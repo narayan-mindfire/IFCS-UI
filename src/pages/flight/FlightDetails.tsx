@@ -2,6 +2,9 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { flights } from "../../const/flightData";
 import FlightPreparations from "../../components/flight/FlightPreparations";
+import Button from "../../components/Button";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const tabs = [
   "Details",
@@ -29,7 +32,15 @@ function FlightDetails() {
   }
 
   return (
-    <div className="p-4 sm:p-6 space-y-6">
+    <div className="p-4 sm:p-6">
+      <nav className="w-full bg-white h-16 flex items-center justify-between ">
+        <Button className="bg-blue-500" to="/flight-list">
+          <div className="flex flex-row justify-center items-center">
+            <FontAwesomeIcon icon={faArrowLeft} className="text-white" />
+            <p>Flights</p>
+          </div>
+        </Button>
+      </nav>
       <div className="bg-gradient-to-r from-blue-50 to-blue-100 shadow rounded-xl p-4 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-blue-800 mb-2">
