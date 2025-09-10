@@ -142,7 +142,7 @@ function FlightDetails() {
 
         {activeTab !== "DETAILS" && (
           <div className="flex items-center justify-center w-full h-full">
-            <p className="text-gray-500 italic text-sm sm:text-lg">
+            <p className="text-gray-500 text-sm sm:text-lg">
               {activeTab === "PREPARATIONS" && <FlightPreparations />}
               {activeTab === "FOOD ORDERS" && <FlightFoodOrder />}
               {activeTab === "GALLEYS" && <FlightGalleys />}

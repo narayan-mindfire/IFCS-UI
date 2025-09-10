@@ -11,10 +11,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { useRef, useState } from "react";
 import { samplePreparations } from "../../const/samplePreparations";
+import { flights } from "../../const/flightData";
+import GalleyLabel from "../GalleyLabel";
+import { useParams } from "react-router-dom";
 
 function FlightPreparations() {
   const tableRef = useRef<HTMLDivElement>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const { flightNumber } = useParams<{ flightNumber: string }>();
+
+  const [selectedPrep, setSelectedPrep] = useState<
+    (typeof samplePreparations)[0] | null
+  >(null);
 
   const handlePrint = () => {
     if (tableRef.current) {
@@ -48,6 +56,8 @@ function FlightPreparations() {
     p.preparedBy.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const flight = flights.flat().find((f) => f.flightNumber === flightNumber);
+  console.log(flight, selectedPrep);
   return (
     <div className="bg-white shadow rounded-lg p-4">
       <div className="flex justify-between items-center mb-4">
@@ -108,6 +118,7 @@ function FlightPreparations() {
                     <FontAwesomeIcon
                       icon={faQrcode}
                       className="cursor-pointer"
+                      onClick={() => setSelectedPrep(prep)}
                     />
                     <FontAwesomeIcon
                       icon={faBoxOpen}
@@ -141,6 +152,21 @@ function FlightPreparations() {
           </table>
         </div>
       </div>
+
+      {/* Modal for GalleyLabel */}
+      {selectedPrep && flight && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-[400px] relative">
+            <button
+              className="absolute top-2 right-2 text-gray-600 hover:text-gray-800"
+              onClick={() => setSelectedPrep(null)}
+            >
+              ✕
+            </button>
+            <GalleyLabel preparation={selectedPrep} flight={flight} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
