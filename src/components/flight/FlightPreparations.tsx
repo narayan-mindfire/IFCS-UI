@@ -68,17 +68,9 @@ function FlightPreparations() {
       <html>
         <head>
           <title>Galley Label</title>
-          <!-- Load Tailwind CSS -->
           <script src="https://cdn.tailwindcss.com"></script>
           <style>
-            body {
-              display: flex;
-              justify-content: center;
-              align-items: center;
-              height: 100vh;
-              margin: 0;
-              background: white;
-            }
+            body { display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; background: white; }
           </style>
         </head>
         <body>
@@ -86,8 +78,6 @@ function FlightPreparations() {
           <script>
             window.onload = function() {
               window.print();
-              // uncomment if you want the window to auto-close
-              // window.close();
             }
           </script>
         </body>
@@ -99,7 +89,8 @@ function FlightPreparations() {
 
   return (
     <div className="bg-white shadow rounded-lg p-4">
-      <div className="flex justify-between items-center mb-4">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
         <h2 className="text-lg font-bold text-gray-700">
           Flight Preparation: {filteredPreparations.length}
         </h2>
@@ -110,7 +101,7 @@ function FlightPreparations() {
           />
           <button
             onClick={handlePrint}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-300 cursor-pointer text-white rounded-lg hover:bg-blue-700 transition"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-400 cursor-pointer text-white rounded-lg hover:bg-blue-600 transition"
           >
             <FontAwesomeIcon icon={faPrint} />
             Print
@@ -118,16 +109,17 @@ function FlightPreparations() {
         </div>
       </div>
 
-      <div ref={tableRef}>
+      {/* Table wrapper for horizontal scroll */}
+      <div ref={tableRef} className="overflow-x-auto">
         <div className="max-h-[50vh] overflow-y-auto">
-          <table className="min-w-full w-full table-fixed border border-gray-200 text-sm border-collapse">
-            <thead className="bg-gray-100 text-gray-600 uppercase text-s sticky top-0 z-10">
+          <table className="min-w-max w-full border border-gray-200 text-sm border-collapse">
+            <thead className="bg-gray-100 text-gray-600 uppercase text-xs sticky top-0 z-10">
               <tr>
                 <th className="px-3 py-2 text-left">Stowage</th>
                 <th className="px-3 py-2 text-left">Carrier</th>
                 <th className="px-3 py-2 text-left">Equipment</th>
                 <th className="px-3 py-2 text-left">
-                  <div className="flex flex-col gap-1">
+                  <div className="flex flex-col gap-1 min-w-[120px]">
                     <span>Prepared By</span>
                     <input
                       type="text"
@@ -138,7 +130,9 @@ function FlightPreparations() {
                     />
                   </div>
                 </th>
-                <th className="px-3 py-2 text-center no-print">Actions</th>
+                <th className="px-3 py-2 text-center no-print min-w-[140px]">
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -157,7 +151,7 @@ function FlightPreparations() {
                     <FontAwesomeIcon
                       icon={faQrcode}
                       className="cursor-pointer"
-                      onClick={() => handlePrintQr(prep)} // ⬅️ print label
+                      onClick={() => handlePrintQr(prep)}
                     />
                     <FontAwesomeIcon
                       icon={faBoxOpen}
@@ -170,7 +164,7 @@ function FlightPreparations() {
                     />
                     <FontAwesomeIcon
                       icon={faTruck}
-                      className="cursor-pointer text-blue-300"
+                      className="cursor-pointer text-blue-400"
                     />
                     <FontAwesomeIcon
                       icon={faInfoCircle}
@@ -179,7 +173,6 @@ function FlightPreparations() {
                   </td>
                 </tr>
               ))}
-
               {filteredPreparations.length === 0 && (
                 <tr>
                   <td colSpan={5} className="text-center py-4 text-gray-500">

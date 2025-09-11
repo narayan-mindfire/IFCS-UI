@@ -27,7 +27,7 @@ const NavigationCard: React.FC<NavigationProps> = ({
     >
       <div
         className={`
-          relative w-100 h-40 flex flex-col justify-center items-center 
+          relative md:w-100 w-70 h-40 flex flex-col justify-center items-center 
           px-10 border border-[var(--backgroundAccent)] rounded-2xl
           transition-transform duration-300 ease-in-out
         ${active && "hover:shadow-lg hover:scale-102"}`}

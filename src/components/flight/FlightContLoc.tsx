@@ -6,12 +6,12 @@ const FlightContLoc = () => {
   const [activeContentTab, setActiveContentTab] = useState("static");
 
   return (
-    <div className=" bg-white w-400 shadow rounded-lg p-4">
-      <div className="flex bg-white ">
+    <div className="bg-white w-full max-w-full shadow rounded-lg p-2 sm:p-4">
+      <div className="flex bg-white overflow-x-auto">
         <button
-          className={`px-8 py-3 rounded-t-lg mx-1 ${
+          className={`px-4 sm:px-8 py-2 sm:py-3 rounded-t-lg mx-0.5 sm:mx-1 whitespace-nowrap text-sm sm:text-base ${
             activeContentTab === "static"
-              ? "bg-blue-300 text-white"
+              ? "bg-blue-400 text-white"
               : "bg-gray-200 text-gray-600"
           }`}
           onClick={() => setActiveContentTab("static")}
@@ -19,9 +19,9 @@ const FlightContLoc = () => {
           Static Content
         </button>
         <button
-          className={`px-8 py-3 rounded-t-lg mx-1 ${
+          className={`px-4 sm:px-8 py-2 sm:py-3 rounded-t-lg mx-0.5 sm:mx-1 whitespace-nowrap text-sm sm:text-base ${
             activeContentTab === "dynamic"
-              ? "bg-blue-300 text-white"
+              ? "bg-blue-400 text-white"
               : "bg-gray-200 text-gray-600 opacity-60"
           }`}
           disabled
@@ -29,9 +29,9 @@ const FlightContLoc = () => {
           Dynamic Content
         </button>
         <button
-          className={`px-8 py-3 rounded-t-lg mx-1 ${
+          className={`px-4 sm:px-8 py-2 sm:py-3 rounded-t-lg mx-0.5 sm:mx-1 whitespace-nowrap text-sm sm:text-base ${
             activeContentTab === "deadhead"
-              ? "bg-blue-300 text-white"
+              ? "bg-blue-400 text-white"
               : "bg-gray-200 text-gray-600 opacity-60"
           }`}
           disabled
@@ -40,18 +40,20 @@ const FlightContLoc = () => {
         </button>
       </div>
 
-      <div className="flex bg-gray-200 flex-1 w-full gap-4 p-4">
-        <div className="flex-1 bg-white rounded-lg shadow-sm">
-          <div className="p-4 border-b">
-            <h2 className="text-lg font-medium text-gray-700">Items</h2>
+      <div className="flex flex-col lg:flex-row bg-gray-200 w-full gap-2 sm:gap-4 p-2 sm:p-4">
+        <div className="w-full lg:flex-1 bg-white rounded-lg shadow-sm">
+          <div className="p-3 sm:p-4 border-b">
+            <h2 className="text-base sm:text-lg font-medium text-blue-400">
+              Items
+            </h2>
           </div>
-          <div className="overflow-y-auto h-full">
+          <div className="overflow-y-auto max-h-48 lg:max-h-full lg:h-full">
             {galleryItems.map((item) => (
               <div
                 key={item.id}
-                className={`p-3 cursor-pointer border-b hover:bg-gray-50 ${
+                className={`p-2 sm:p-3 cursor-pointer border-b hover:bg-gray-50 ${
                   selectedItem.id === item.id
-                    ? "bg-blue-100 border-l-4 border-l-blue-300"
+                    ? "bg-blue-100 border-l-4 border-l-blue-400"
                     : ""
                 }`}
                 onClick={() => setSelectedItem(item)}
@@ -62,33 +64,35 @@ const FlightContLoc = () => {
           </div>
         </div>
 
-        <div className="flex-[2] space-y-4">
+        <div className="w-full lg:flex-[2] space-y-2 sm:space-y-4">
           <div className="bg-white rounded-lg shadow-sm">
-            <div className="p-4 border-b">
-              <h2 className="text-lg font-medium text-blue-300">Details</h2>
+            <div className="p-3 sm:p-4 border-b">
+              <h2 className="text-base sm:text-lg font-medium text-blue-400">
+                Details
+              </h2>
             </div>
-            <div className="p-4">
-              <h3 className="font-medium text-gray-800 mb-2">
+            <div className="p-3 sm:p-4">
+              <h3 className="font-medium text-gray-800 mb-2 text-sm sm:text-base">
                 {selectedItem.details.title}
               </h3>
-              <p className="text-sm text-gray-600 mb-1">
+              <p className="text-xs sm:text-sm text-gray-600 mb-1">
                 {selectedItem.details.description}
               </p>
-              <p className="text-sm text-gray-500">
+              <p className="text-xs sm:text-sm text-gray-500">
                 {selectedItem.details.subtitle}
               </p>
             </div>
           </div>
 
           <div className="bg-white rounded-lg shadow-sm">
-            <div className="p-4 border-b">
-              <h2 className="text-lg font-medium text-blue-300">
+            <div className="p-3 sm:p-4 border-b">
+              <h2 className="text-base sm:text-lg font-medium text-blue-400">
                 Galley Locations
               </h2>
             </div>
-            <div className="p-4">
+            <div className="p-2 sm:p-4">
               <div className="overflow-x-auto">
-                <table className="w-full text-sm">
+                <table className="w-full text-xs sm:text-sm">
                   <thead>
                     <tr className="border-b">
                       <th className="text-left py-2 text-gray-500">Name</th>
@@ -115,8 +119,8 @@ const FlightContLoc = () => {
           </div>
         </div>
 
-        <div className="flex-1 bg-white rounded-lg shadow-sm">
-          <div className="p-4 h-full flex flex-col items-center justify-center">
+        <div className="w-full lg:flex-1 bg-white rounded-lg shadow-sm">
+          <div className="p-3 sm:p-4 h-48 sm:h-64 lg:h-full flex flex-col items-center justify-center">
             <div className="relative">
               <div className="flex flex-col items-center space-y-2">
                 <div className="text-xs text-gray-500 mb-4">

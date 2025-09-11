@@ -3,7 +3,7 @@ import NavigationCard from "../../components/cards/NavigationCard";
 
 function Flight() {
   return (
-    <div>
+    <div className="flex flex-row">
       <NavigationCard
         title={"Standard view"}
         icon={faPlane}
