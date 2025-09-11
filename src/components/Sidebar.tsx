@@ -29,7 +29,7 @@ interface SidebarProps {
 const Sidebar: React.FC<SidebarProps> = ({ closeSidebar }) => {
   return (
     <div className="flex min-h-full flex-col justify-between shadow-md w-64 py-6 bg-[var(--backgroundAccent)]">
-      <div className="flex justify-end md:hidden px-4">
+      <div className="flex justify-end lg:hidden px-4">
         <button onClick={closeSidebar}>
           <FontAwesomeIcon icon={faTimes} size="lg" />
         </button>

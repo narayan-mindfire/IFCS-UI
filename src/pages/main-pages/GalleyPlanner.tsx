@@ -10,7 +10,7 @@ import NavigationCard from "../../components/cards/NavigationCard";
 
 function GalleyPlanner() {
   return (
-    <div className="grid grid-cols-3 gap-6 p-6">
+    <div className="flex flex-row flex-wrap gap-6 p-6">
       <NavigationCard
         title={"Loading Plans"}
         icon={faPlaneCircleCheck}

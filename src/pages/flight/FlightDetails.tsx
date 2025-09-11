@@ -46,6 +46,7 @@ function FlightDetails() {
           </div>
         </Button>
       </nav>
+
       <div className="bg-gradient-to-r from-blue-50 to-blue-100 shadow rounded-xl p-3 sm:p-6 grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-6 items-start">
         <div>
           <h1 className="text-xl sm:text-3xl font-extrabold text-blue-800 mb-1 sm:mb-2">
@@ -69,29 +70,27 @@ function FlightDetails() {
             <span className="font-medium">{flight.arrival}</span>
           </p>
         </div>
-      </div>{" "}
+      </div>
+
       <div className="overflow-x-auto mt-3 sm:mt-4">
-        <div
-          className="flex gap-2 bg-blue-400 rounded-lg shadow 
-                lg:grid lg:grid-cols-9 md:gap-0 min-w-max lg:min-w-0"
-        >
+        {/* === CHANGE IS ON THE LINE BELOW === */}
+        <div className="flex gap-2 bg-blue-400 rounded-lg shadow p-1">
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 sm:py-3 text-xs sm:text-sm font-semibold whitespace-nowrap transition-all
-        ${
-          activeTab === tab
-            ? "bg-blue-100 text-blue-400 shadow-md"
-            : "text-white hover:bg-blue-300"
-        }
-        ${"lg:w-full text-center"}`}
+              className={`flex-1 min-w-[120px] md:min-w-[140px] px-3 py-2 sm:py-3 text-xs sm:text-sm font-semibold text-center transition-all ${
+                activeTab === tab
+                  ? "bg-blue-100 text-blue-400 shadow-md"
+                  : "text-white hover:bg-blue-300"
+              }`}
             >
               {tab}
             </button>
           ))}
         </div>
       </div>
+
       <div className="bg-white shadow-lg rounded-xl mt-3 sm:mt-4 p-3 sm:p-6 min-w-full min-h-[250px]">
         {activeTab === "DETAILS" && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-6 text-gray-800">
@@ -104,7 +103,6 @@ function FlightDetails() {
               </p>
               <p className="text-xs sm:text-sm text-gray-500">{flight.acReg}</p>
             </div>
-
             <div>
               <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase">
                 Ground Time
@@ -113,14 +111,12 @@ function FlightDetails() {
                 {flight.groundTime}
               </p>
             </div>
-
             <div>
               <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase">
                 Plan
               </h3>
               <p className="text-sm sm:text-lg font-semibold">{flight.plan}</p>
             </div>
-
             <div>
               <h3 className="text-xs sm:text-sm font-bold text-gray-500 uppercase">
                 Passengers
@@ -141,7 +137,6 @@ function FlightDetails() {
             </div>
           </div>
         )}
-
         {activeTab !== "DETAILS" && (
           <div className="flex items-center justify-center w-full h-full">
             <div className="w-full">
