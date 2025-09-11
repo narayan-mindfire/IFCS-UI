@@ -69,19 +69,23 @@ function FlightDetails() {
             <span className="font-medium">{flight.arrival}</span>
           </p>
         </div>
-      </div>
-      ={" "}
+      </div>{" "}
       <div className="overflow-x-auto mt-3 sm:mt-4">
-        <div className="flex md:grid md:grid-cols-8 gap-2 bg-blue-400 rounded-lg shadow overflow-hidden min-w-max md:min-w-0">
+        <div
+          className="flex gap-2 bg-blue-400 rounded-lg shadow 
+                lg:grid lg:grid-cols-9 md:gap-0 min-w-max lg:min-w-0"
+        >
           {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`flex-1 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm font-semibold whitespace-nowrap transition-all ${
-                activeTab === tab
-                  ? "bg-blue-100 text-blue-400 shadow-md"
-                  : "text-white hover:bg-blue-300"
-              }`}
+              className={`px-4 py-2 sm:py-3 text-xs sm:text-sm font-semibold whitespace-nowrap transition-all
+        ${
+          activeTab === tab
+            ? "bg-blue-100 text-blue-400 shadow-md"
+            : "text-white hover:bg-blue-300"
+        }
+        ${"lg:w-full text-center"}`}
             >
               {tab}
             </button>

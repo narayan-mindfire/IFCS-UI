@@ -5,6 +5,7 @@ import { sampleFoodOrders } from "../../const/foodOrder";
 
 function FlightFoodOrder() {
   const tableRef = useRef<HTMLDivElement>(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const handlePrint = () => {
     if (tableRef.current) {
@@ -32,14 +33,15 @@ function FlightFoodOrder() {
       }
     }
   };
-  const [searchTerm, setSearchTerm] = useState("");
+
   const filteredFoodOrders = sampleFoodOrders.filter((p) =>
     p.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div className="bg-white w-full shadow rounded-lg p-4">
-      <div className="flex justify-between items-center mb-4">
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-3">
         <h2 className="text-lg font-bold text-gray-700">
           Food Orders: {filteredFoodOrders.length}
         </h2>
@@ -50,7 +52,7 @@ function FlightFoodOrder() {
           />
           <button
             onClick={handlePrint}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-700 transition"
+            className="flex items-center gap-2 px-4 py-2 bg-blue-400 text-white rounded-lg hover:bg-blue-600 transition"
           >
             <FontAwesomeIcon icon={faPrint} />
             Print
@@ -58,30 +60,37 @@ function FlightFoodOrder() {
         </div>
       </div>
 
-      <div ref={tableRef}>
+      {/* Scrollable Table */}
+      <div ref={tableRef} className="overflow-x-auto">
         <div className="max-h-[60vh] overflow-y-auto">
-          <table className="min-w-full w-full table-fixed border border-gray-200 text-sm border-collapse">
+          <table className="min-w-max w-full border border-gray-200 text-sm border-collapse">
             <thead className="bg-gray-100 text-gray-600 uppercase text-xs sticky top-0 z-10">
               <tr>
                 <th className="px-3 py-2 text-left">Station</th>
                 <th className="px-3 py-2 text-left">FLT #</th>
                 <th className="px-3 py-2 text-left">Seat #</th>
-                <th className="px-3 py-2 text-left">Passenger Name</th>
+                <th className="px-3 py-2 text-left min-w-[140px]">
+                  Passenger Name
+                </th>
                 <th className="px-3 py-2 text-left">SKU</th>
                 <th className="px-3 py-2 text-left">Cabin</th>
-                <th className="px-3 py-2 text-left">
-                  Name{" "}
-                  <input
-                    type="text"
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
-                    className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-400"
-                  />
+                <th className="px-3 py-2 text-left min-w-[140px]">
+                  <div className="flex flex-col gap-1">
+                    <span>Name</span>
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                      className="w-full px-2 py-1 text-xs border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-400"
+                    />
+                  </div>
                 </th>
-                <th className="px-3 py-2 text-center">Ordered</th>
-                <th className="px-3 py-2 text-center">Distributed</th>
-                <th className="px-3 py-2 text-center">Loaded</th>
+                <th className="px-3 py-2 text-center min-w-[100px]">Ordered</th>
+                <th className="px-3 py-2 text-center min-w-[100px]">
+                  Distributed
+                </th>
+                <th className="px-3 py-2 text-center min-w-[100px]">Loaded</th>
               </tr>
             </thead>
             <tbody>
@@ -104,6 +113,13 @@ function FlightFoodOrder() {
                   <td className="px-3 py-2 text-center">{order.loaded}</td>
                 </tr>
               ))}
+              {filteredFoodOrders.length === 0 && (
+                <tr>
+                  <td colSpan={10} className="text-center py-4 text-gray-500">
+                    No results found
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
