@@ -17,7 +17,6 @@ import galleyXplanner from "../../assets/logos/galleyXplanner.png";
 function FlightList() {
   return (
     <div className="w-full h-full flex flex-col">
-      {/* Header Bar */}
       <div className="bg-blue-100 w-full h-16 flex justify-between items-center px-8">
         <div className="flex items-center">
           <Button
@@ -33,9 +32,7 @@ function FlightList() {
         </div>
       </div>
 
-      {/* Filters + Stats */}
       <div className="bg-white shadow-md rounded-lg w-full flex flex-col md:flex-row justify-between items-center px-8 py-6 gap-6">
-        {/* Filters */}
         <div className="flex flex-col w-full md:w-auto">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Flights</h1>
           <div className="flex flex-wrap gap-6">
@@ -74,7 +71,6 @@ function FlightList() {
           </div>
         </div>
 
-        {/* Stats */}
         <div className="flex items-center gap-12 md:gap-16 w-full md:w-auto justify-around">
           <div className="flex flex-col items-center">
             <h1 className="text-3xl font-bold text-gray-800">94</h1>
@@ -115,7 +111,6 @@ function FlightList() {
         </div>
       </div>
 
-      {/* Table Header */}
       <div className="bg-white shadow-lg overflow-hidden mt-6">
         <div className="grid grid-cols-20 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-base font-bold sticky top-0 z-20">
           <div className="col-span-8 flex items-center justify-center gap-2 py-5 border-r border-gray-700">
@@ -176,7 +171,6 @@ function FlightList() {
           ))}
         </div>
 
-        {/* Flight Rows */}
         <div className="divide-y divide-gray-400 overflow-y-auto max-h-[calc(100vh-14rem)] text-base">
           {flights.map((pair, idx) => (
             <div key={idx} className="mb-4">
@@ -188,7 +182,6 @@ function FlightList() {
         </div>
       </div>
 
-      {/* Footer */}
       <footer className="w-full flex items-center bg-gray-400 h-8 fixed bottom-0 z-10">
         <img src={galleyXplanner} alt="Bottom Logo" className="w-40" />
       </footer>
