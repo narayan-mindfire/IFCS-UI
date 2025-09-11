@@ -8,6 +8,7 @@ import {
   faCog,
   faServer,
   faCircleCheck,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import IFCSLogo from "../assets/logos/IFCSLogo.png";
 
@@ -21,10 +22,20 @@ const navItems = [
   { to: "/setup", label: "Setup", icon: faCog },
 ];
 
-const Sidebar: React.FC = () => {
+interface SidebarProps {
+  closeSidebar?: () => void;
+}
+
+const Sidebar: React.FC<SidebarProps> = ({ closeSidebar }) => {
   return (
-    <div className="flex min-h-[92vh] max-h-auto flex-col justify-between bg-[var(--backgroundAccent)] shadow-md w-64 py-10">
-      <nav className="flex-1 px-4 space-y-3">
+    <div className="flex min-h-full flex-col justify-between shadow-md w-64 py-6 bg-[var(--backgroundAccent)]">
+      <div className="flex justify-end md:hidden px-4">
+        <button onClick={closeSidebar}>
+          <FontAwesomeIcon icon={faTimes} size="lg" />
+        </button>
+      </div>
+
+      <nav className="flex-1 px-4 space-y-2">
         {navItems.map(({ to, label, icon }) => (
           <NavLink
             key={to}
@@ -36,6 +47,7 @@ const Sidebar: React.FC = () => {
                   : "text-gray-500 hover:bg-gray-200"
               }`
             }
+            onClick={closeSidebar}
           >
             <FontAwesomeIcon icon={icon} />
             {label}
@@ -44,7 +56,11 @@ const Sidebar: React.FC = () => {
       </nav>
 
       <div className="p-4">
-        <img src={IFCSLogo} alt="Bottom Logo" className="w-32 mx-auto" />
+        <img
+          src={IFCSLogo}
+          alt="Bottom Logo"
+          className="w-24 md:w-32 mx-auto"
+        />
       </div>
     </div>
   );
