@@ -14,12 +14,12 @@ const Layout: React.FC = () => {
         <div
           className={`fixed inset-y-0 left-0 transform ${
             isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-          } transition-transform duration-300 ease-in-out bg-[var(--backgroundAccent)] w-64 z-50 md:relative md:translate-x-0`}
+          } transition-transform duration-300 ease-in-out bg-[var(--backgroundAccent)] w-64 z-50 lg:relative lg:translate-x-0`}
         >
           <Sidebar closeSidebar={() => setIsSidebarOpen(false)} />
         </div>
 
-        <main className="flex-1 p-3 md:p-6 overflow-y-auto">
+        <main className="flex-1 p-3 lg:p-6 overflow-y-auto">
           <Outlet />
         </main>
       </div>

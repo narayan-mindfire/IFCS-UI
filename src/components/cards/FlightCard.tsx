@@ -23,16 +23,16 @@ const FlightCard: React.FC<FlightCardProps> = ({
   businessPassengers,
 }) => {
   return (
-    <div className="bg-gray-200 rounded-xl shadow-md p-6 w-96">
-      <div className="flex justify-between text-gray-700 mb-4">
+    <div className="bg-gray-200 rounded-xl shadow-md p-4 sm:p-6 w-full sm:w-96">
+      <div className="flex justify-between text-gray-700 mb-4 text-sm sm:text-base">
         <span>Flight</span>
         <span className="font-semibold">{flightNumber}</span>
       </div>
 
       <div className="flex items-center justify-between">
         <div className="text-center">
-          <p className="text-sm text-gray-600">{departureTime}</p>
-        <p className="text-3xl font-bold">{departureAirport}</p>
+          <p className="text-xs sm:text-sm text-gray-600">{departureTime}</p>
+          <p className="text-2xl sm:text-3xl font-bold">{departureAirport}</p>
         </div>
 
         <div className="relative flex-1 mx-2 h-8">
@@ -52,30 +52,34 @@ const FlightCard: React.FC<FlightCardProps> = ({
 
           <FontAwesomeIcon
             icon={faPlane}
-            className="absolute text-gray-700 left-1/2 top-1/4 transform -translate-x-1/2 -translate-y-1/2"
+            className="absolute text-gray-700 left-1/2 top-1/4 transform -translate-x-1/2 -translate-y-1/2 text-xs sm:text-sm"
           />
         </div>
 
         <div className="text-center">
-          <p className="text-sm text-gray-600">{arrivalTime}</p>
-          <p className="text-3xl font-bold">{arrivalAirport}</p>
+          <p className="text-xs sm:text-sm text-gray-600">{arrivalTime}</p>
+          <p className="text-2xl sm:text-3xl font-bold">{arrivalAirport}</p>
         </div>
       </div>
 
-      <div className="bg-white mt-6 rounded-lg p-4 shadow-sm">
-        <div className="flex justify-between text-gray-700 mb-3">
+      <div className="bg-white mt-6 rounded-lg p-3 sm:p-4 shadow-sm">
+        <div className="flex justify-between text-gray-700 mb-3 text-xs sm:text-sm">
           <span>Total passengers:</span>
           <span className="font-bold">{totalPassengers}</span>
         </div>
 
-        <div className="flex justify-between text-gray-700">
+        <div className="flex justify-around text-gray-700">
           <div className="text-center">
-            <p className="text-xl font-semibold">{economyPassengers}</p>
-            <p className="text-sm">Economy</p>
+            <p className="text-lg sm:text-xl font-semibold">
+              {economyPassengers}
+            </p>
+            <p className="text-xs sm:text-sm">Economy</p>
           </div>
           <div className="text-center">
-            <p className="text-xl font-semibold">{businessPassengers}</p>
-            <p className="text-sm">Business</p>
+            <p className="text-lg sm:text-xl font-semibold">
+              {businessPassengers}
+            </p>
+            <p className="text-xs sm:text-sm">Business</p>
           </div>
         </div>
       </div>

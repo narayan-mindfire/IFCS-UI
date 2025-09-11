@@ -30,13 +30,9 @@ const DashboardMetrics: React.FC = () => {
   const itemsPerPage = 6;
   const totalPages = Math.ceil(metrics.length / itemsPerPage);
 
-  const nextPage = () => {
-    setCurrentIndex((prev) => (prev + 1) % totalPages);
-  };
-
-  const prevPage = () => {
+  const nextPage = () => setCurrentIndex((prev) => (prev + 1) % totalPages);
+  const prevPage = () =>
     setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
-  };
 
   const getCurrentMetrics = () => {
     const start = currentIndex * itemsPerPage;
@@ -45,7 +41,7 @@ const DashboardMetrics: React.FC = () => {
   };
 
   return (
-    <div className="relative bg-white rounded-xl shadow-lg mt-10">
+    <div className="relative bg-white rounded-xl shadow-lg mt-6 mx-2 sm:mx-0">
       <button
         onClick={prevPage}
         className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow-md hover:bg-gray-200 transition-colors"
@@ -62,8 +58,8 @@ const DashboardMetrics: React.FC = () => {
         <FontAwesomeIcon icon={faAnglesRight} />
       </button>
 
-      <div className="px-12 py-6">
-        <div className="grid grid-cols-6 gap-2">
+      <div className="px-4 sm:px-12 py-6">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
           {getCurrentMetrics().map((metric, idx) => (
             <ProgressCircle
               key={`${currentIndex}-${idx}`}
@@ -71,7 +67,7 @@ const DashboardMetrics: React.FC = () => {
               percentage={metric.percentage}
               issues={metric.issues}
               color={metric.color}
-              size={100}
+              size={80}
             />
           ))}
         </div>

@@ -8,7 +8,8 @@ function Dashboard() {
       <DashboardHeader userName="Shitanshu" />
       <DashboardMetrics />
 
-      <div className="flex flex-row justify-around mt-10">
+      <h1 className="mt-10 md:ms-0 ms-5">Upcoming Flights</h1>
+      <div className="mt-10 flex justify-around flex-col sm:flex-row sm:flex-wrap lg:flex-nowrap gap-6 px-4">
         <FlightCard
           flightNumber="WY101"
           departureTime="6:10 PM"
