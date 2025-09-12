@@ -73,8 +73,7 @@ function FlightDetails() {
       </div>
 
       <div className="overflow-x-auto mt-3 sm:mt-4">
-        {/* === CHANGE IS ON THE LINE BELOW === */}
-        <div className="flex gap-2 bg-blue-400 rounded-lg shadow p-1">
+        <div className="flex gap-2 bg-blue-400 rounded-lg shadow p-1 min-w-max">
           {tabs.map((tab) => (
             <button
               key={tab}
