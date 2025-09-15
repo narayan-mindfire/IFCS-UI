@@ -17,130 +17,123 @@ import galleyXplanner from "../../assets/logos/galleyXplanner.png";
 function FlightList() {
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="bg-blue-100 w-full h-16 flex justify-between items-center px-4 sm:px-8">
-        <div className="flex items-center">
-          <Button
-            className="bg-blue-500 text-white px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-semibold rounded-lg"
-            to="/flights"
-          >
-            Back
-          </Button>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <img
-            src={airTransat}
-            alt="User Logo"
-            className="h-10 sm:h-14 w-auto"
-          />
-        </div>
+      <div className="bg-blue-100 w-full h-14 flex justify-between items-center px-4 md:px-8 shadow-sm">
+        <Button
+          className="bg-blue-500 text-white px-3 py-1 text-sm font-semibold rounded-md hover:bg-blue-600 transition-colors duration-200"
+          to="/flights"
+        >
+          Back
+        </Button>
+        <img src={airTransat} alt="User Logo" className="h-10 w-auto" />
       </div>
 
-      <div className="bg-white shadow-md rounded-lg w-full flex flex-col md:flex-row justify-between items-center px-4 sm:px-8 py-4 sm:py-6 gap-4 sm:gap-6">
-        <div className="flex flex-col w-full md:w-auto">
-          <h1 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
-            Flights
-          </h1>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
-            <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-2">
-                Station
-              </label>
-              <select className="w-full sm:w-48 px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg shadow-sm text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500">
-                <option value="">Select Station</option>
-                <option value="YYZ">Toronto (YYZ)</option>
-                <option value="YUL">Montreal (YUL)</option>
-                <option value="YVR">Vancouver (YVR)</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-2">
-                Date
-              </label>
-              <input
-                type="date"
-                className="w-full sm:w-52 px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg shadow-sm text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-gray-600 mb-2">
-                Search Flight
-              </label>
-              <input
-                type="text"
-                placeholder="Enter Flight No."
-                className="w-full sm:w-56 px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg shadow-sm text-sm sm:text-base placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-6 sm:gap-12 md:gap-16 w-full md:w-auto justify-around">
-          <div className="flex flex-col items-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">94</h1>
-            <h3 className="text-sm sm:text-base text-gray-500">Flights</h3>
-            <FontAwesomeIcon
-              icon={faPlane}
-              className="text-blue-400 mt-2"
-              size="2x"
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">0</h1>
-            <h3 className="text-sm sm:text-base text-gray-500">Complete</h3>
-            <FontAwesomeIcon
-              icon={faCheckCircle}
-              className="text-green-500 mt-2"
-              size="2x"
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">0</h1>
-            <h3 className="text-sm sm:text-base text-gray-500">In Progress</h3>
-            <FontAwesomeIcon
-              icon={faRotateRight}
-              className="text-yellow-500 mt-2"
-              size="2x"
-            />
-          </div>
-          <div className="flex flex-col items-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-800">94</h1>
-            <h3 className="text-sm sm:text-base text-gray-500">Waiting</h3>
-            <FontAwesomeIcon
-              icon={faClock}
-              className="text-blue-400 mt-2"
-              size="2x"
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className="bg-white shadow-lg overflow-hidden mt-6">
-        <div className="overflow-x-auto">
-          <div className="min-w-[1200px]">
-            <div className="grid grid-cols-20 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-base font-bold sticky top-0 z-20">
-              <div className="col-span-8 flex items-center justify-center gap-2 py-5 border-r border-gray-700">
-                <FontAwesomeIcon icon={faPlane} className="text-blue-400" />
-                <span>Flight Information</span>
+      <div className="flex-1 overflow-y-auto p-0">
+        <div className="bg-white shadow-md rounded-md w-full flex flex-col lg:flex-row justify-between items-center p-2 lg:p-3 gap-6">
+          <div className="flex flex-col w-full lg:w-auto">
+            <h1 className="text-2xl font-bold text-gray-800 mb-4">Flights</h1>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 lg:flex lg:flex-row lg:gap-6 w-full">
+              <div className="flex flex-col">
+                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                  Station
+                </label>
+                <select className="w-full sm:w-40 px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 transition-colors duration-200">
+                  <option value="">Select</option>
+                  <option value="YYZ">Toronto (YYZ)</option>
+                  <option value="YUL">Montreal (YUL)</option>
+                  <option value="YVR">Vancouver (YVR)</option>
+                </select>
               </div>
-              <div className="col-span-2 flex items-center justify-center gap-2 py-5 border-r border-gray-700">
+              <div className="flex flex-col">
+                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                  Date
+                </label>
+                <input
+                  type="date"
+                  className="w-full sm:w-44 px-3 py-2 border border-gray-300 rounded-md text-sm focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
+                />
+              </div>
+              <div className="flex flex-col">
+                <label className="block text-xs font-semibold text-gray-600 mb-1">
+                  Flight No.
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter Flight"
+                  className="w-full sm:w-44 px-3 py-2 border border-gray-300 rounded-md text-sm placeholder-gray-400 focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full lg:w-auto lg:flex lg:justify-end">
+            {[
+              {
+                label: "Flights",
+                value: 94,
+                icon: faPlane,
+                color: "text-blue-400",
+              },
+              {
+                label: "Complete",
+                value: 0,
+                icon: faCheckCircle,
+                color: "text-green-500",
+              },
+              {
+                label: "In Progress",
+                value: 0,
+                icon: faRotateRight,
+                color: "text-yellow-500",
+              },
+              {
+                label: "Waiting",
+                value: 94,
+                icon: faClock,
+                color: "text-blue-400",
+              },
+            ].map((item, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center text-center p-3 rounded-lg bg-gray-50 shadow-sm"
+              >
+                <h1 className="text-xl font-bold text-gray-800">
+                  {item.value}
+                </h1>
+                <h3 className="text-gray-500 text-xs">{item.label}</h3>
+                <FontAwesomeIcon
+                  icon={item.icon}
+                  className={`${item.color} mt-2 text-lg`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="bg-white shadow-lg overflow-hidden mt-4">
+        <div className="overflow-x-auto">
+          <div className="min-w-[1400px]">
+            <div className="grid grid-cols-20 bg-gradient-to-r from-gray-800 to-gray-900 text-white text-sm font-bold sticky top-0 z-20">
+              <div className="col-span-8 flex items-center justify-center gap-2 py-3 border-r-2 border-gray-400">
+                <FontAwesomeIcon icon={faPlane} className="text-blue-400" />
+                <span>Flight Info</span>
+              </div>
+              <div className="col-span-2 flex items-center justify-center gap-2 py-3 border-r-2 border-gray-400">
                 <FontAwesomeIcon icon={faCogs} className="text-green-400" />
                 <span>Aircraft</span>
               </div>
-              <div className="col-span-1 flex items-center justify-center gap-2 py-5 border-r border-gray-700">
+              <div className="col-span-1 flex items-center justify-center gap-2 py-3 border-r-2 border-gray-400">
                 <FontAwesomeIcon
                   icon={faClipboardList}
                   className="text-yellow-400"
                 />
-                <span>Plans</span>
+                <span>Plan</span>
               </div>
-              <div className="col-span-5 flex items-center justify-center gap-2 py-5 border-r border-gray-700">
+              <div className="col-span-5 flex items-center justify-center gap-2 py-3 border-r-2 border-gray-400">
                 <FontAwesomeIcon icon={faUsers} className="text-purple-400" />
                 <span>PAX</span>
               </div>
-              <div className="col-span-4 flex items-center justify-center gap-2 py-5">
+              <div className="col-span-4 flex items-center justify-center gap-2 py-3">
                 <FontAwesomeIcon
                   icon={faCheckCircle}
                   className="text-red-400"
@@ -149,7 +142,7 @@ function FlightList() {
               </div>
             </div>
 
-            <div className="grid grid-cols-20 bg-gray-100 text-sm font-semibold border-b border-gray-300">
+            <div className="grid grid-cols-20 bg-gray-100 text-xs font-semibold border-b border-gray-300">
               {[
                 "Airline",
                 "Route",
@@ -159,31 +152,31 @@ function FlightList() {
                 "Departure",
                 "Arrival",
                 "Status",
-                "AC Type / Reg",
-                "Ground Time",
-                "Meal Plan",
+                "AC / Reg",
+                "Ground",
+                "Plan",
                 "Total",
-                "Configuration",
+                "Config",
                 "",
               ].map((label, idx) => (
                 <div
                   key={idx}
-                  className={`text-center py-4 border-r border-gray-300 ${
+                  className={`text-center py-2 border-r border-gray-300 ${
                     idx === 13
                       ? "col-span-4"
                       : idx === 12
-                      ? "col-span-4 grid grid-cols-1"
+                      ? "col-span-4"
                       : "col-span-1"
                   }`}
                 >
-                  <div className="font-semibold text-base">{label}</div>
+                  {label}
                 </div>
               ))}
             </div>
 
-            <div className="divide-y divide-gray-400 overflow-y-auto max-h-[calc(100vh-14rem)] text-base">
+            <div className="divide-y divide-gray-200 overflow-y-auto max-h-[calc(100vh-12rem)] mb-10">
               {flights.map((pair, idx) => (
-                <div key={idx} className="mb-4">
+                <div key={idx} className=" border-b-2 border-black">
                   {pair.map((flight, subIdx) => (
                     <FlightRow key={subIdx} {...flight} />
                   ))}
@@ -194,8 +187,8 @@ function FlightList() {
         </div>
       </div>
 
-      <footer className="w-full flex items-center bg-gray-400 h-8 fixed bottom-0 z-10">
-        <img src={galleyXplanner} alt="Bottom Logo" className="w-32 sm:w-40" />
+      <footer className="w-full flex items-center bg-gray-400 h-7 fixed bottom-0 z-10">
+        <img src={galleyXplanner} alt="Bottom Logo" className="w-28" />
       </footer>
     </div>
   );
