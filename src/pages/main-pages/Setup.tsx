@@ -11,7 +11,7 @@ import NavigationCard from "../../components/cards/NavigationCard";
 
 function Setup() {
   return (
-    <div className="flex flex-row flex-wrap gap-6 p-6">
+    <div className="flex flex-row flex-wrap gap-6 p-6 justify-around">
       <NavigationCard title={"Users"} icon={faUsers} to={"/flight-list"} />
       <NavigationCard
         title={"Fleet/Config"}

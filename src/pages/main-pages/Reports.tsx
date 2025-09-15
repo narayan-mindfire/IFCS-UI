@@ -13,7 +13,7 @@ import NavigationCard from "../../components/cards/NavigationCard";
 
 function Reports() {
   return (
-    <div className="flex flex-row flex-wrap gap-6 p-6">
+    <div className="flex flex-row flex-wrap gap-6 p-6 justify-around">
       <NavigationCard
         title={"Activity Log"}
         icon={faBars}
