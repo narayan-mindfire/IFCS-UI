@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { flights } from "../../const/flightData";
 import FlightPreparations from "../../components/flight/FlightPreparations";
 import Button from "../../components/Button";
@@ -24,7 +24,14 @@ const tabs = [
 
 function FlightDetails() {
   const { flightNumber } = useParams<{ flightNumber: string }>();
-  const [activeTab, setActiveTab] = useState("DETAILS");
+
+  const [activeTab, setActiveTab] = useState(() => {
+    return localStorage.getItem("activeTab") || "DETAILS";
+  });
+
+  useEffect(() => {
+    localStorage.setItem("activeTab", activeTab);
+  }, [activeTab]);
 
   const flight = flights.flat().find((f) => f.flightNumber === flightNumber);
 

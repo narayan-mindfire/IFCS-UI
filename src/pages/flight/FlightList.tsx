@@ -7,6 +7,7 @@ import {
   faCheckCircle,
   faRotateRight,
   faClock,
+  faArrowLeft,
 } from "@fortawesome/free-solid-svg-icons";
 import airTransat from "../../assets/logos/airTransat.png";
 import FlightRow from "../../components/flight/FlightRow";
@@ -17,17 +18,17 @@ import galleyXplanner from "../../assets/logos/galleyXplanner.png";
 function FlightList() {
   return (
     <div className="w-full h-full flex flex-col">
-      <div className="bg-blue-100 w-full h-14 flex justify-between items-center px-4 md:px-8 shadow-sm">
-        <Button
-          className="bg-blue-500 text-white px-3 py-1 text-sm font-semibold rounded-md hover:bg-blue-600 transition-colors duration-200"
-          to="/flights"
-        >
-          Back
+      <div className="bg-blue-100 w-full h-14 flex justify-between items-center px-2 shadow-sm">
+        <Button className="bg-blue-400" to="/flights">
+          <div className="flex flex-row justify-center items-center gap-2">
+            <FontAwesomeIcon icon={faArrowLeft} className="text-white" />
+            <p className="text-sm sm:text-base">Flights</p>
+          </div>
         </Button>
         <img src={airTransat} alt="User Logo" className="h-10 w-auto" />
       </div>
 
-      <div className="flex-1 overflow-y-auto p-0">
+      <div className="flex-1 overflow-y-auto px-2">
         <div className="bg-white shadow-md rounded-md w-full flex flex-col lg:flex-row justify-between items-center p-2 lg:p-3 gap-6">
           <div className="flex flex-col w-full lg:w-auto">
             <h1 className="text-2xl font-bold text-gray-800 mb-4">Flights</h1>
