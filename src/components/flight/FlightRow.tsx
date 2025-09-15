@@ -183,7 +183,7 @@ const FlightRow: React.FC<Flight> = ({
         </div>
       </div>
 
-      <div className="col-span-4 flex gap-2 justify-center text-gray-500 text-base">
+      <div className="col-span-4 flex gap-2 justify-center text-gray-500 text-center items-center">
         <FontAwesomeIcon
           icon={faExclamationTriangle}
           className="hover:text-yellow-500 cursor-pointer"
