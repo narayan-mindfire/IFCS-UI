@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPlane,
@@ -72,7 +71,7 @@ const FlightRow: React.FC<Flight> = ({
       case "cancelled":
         return "bg-red-100 text-red-700";
       default:
-        return "bg-green-100 text-green-700";
+        return "bg-gray-200 text-gray-700";
     }
   };
 
@@ -98,160 +97,139 @@ const FlightRow: React.FC<Flight> = ({
   return (
     <div
       className="
-    grid grid-cols-20 items-center border-b border-gray-200 
-    py-2 sm:py-4 text-sm sm:text-base 
-    hover:bg-gray-50 transition-colors 
-    min-w-[1200px]
-  "
+        grid grid-cols-20 items-center border-b border-gray-200 
+        py-1.5 sm:py-2 text-xs sm:text-sm 
+        hover:bg-gray-50 transition-colors 
+        min-w-[1400px]
+      "
     >
-      <div className="col-span-1 flex justify-center px-1 sm:px-2">
+      <div className="col-span-1 flex justify-center px-1">
         <img
           src={logoUrl}
           alt={airlineCode}
-          className="h-6 w-6 sm:h-10 sm:w-10 object-contain"
+          className="h-6 w-6 object-contain"
         />
       </div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2 font-medium text-base sm:text-lg">
-        {route}
-      </div>
+      <div className="col-span-1 text-center font-medium">{route}</div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2 font-bold text-lg sm:text-xl text-blue-500">
+      <div className="col-span-1 text-center font-bold text-blue-500">
         {flightNumber}
       </div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2 text-xs sm:text-base">
-        {type}
+      <div className="col-span-1 text-center">{type}</div>
+
+      <div className="col-span-1 text-center">{date}</div>
+
+      <div className="col-span-1 text-center">
+        <div className="font-medium">{departure}</div>
+        <div className="text-gray-500 text-[11px]">{depStation}</div>
       </div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2 text-xs sm:text-base">
-        {date}
+      <div className="col-span-1 text-center">
+        <div className="font-medium">{arrival}</div>
+        <div className="text-gray-500 text-[11px]">{arrStation}</div>
       </div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2">
-        <div className="text-base sm:text-lg font-medium">{departure}</div>
-        <div className="text-xs sm:text-sm text-gray-500">{depStation}</div>
-      </div>
-
-      <div className="col-span-1 text-center px-1 sm:px-2">
-        <div className="text-base sm:text-lg font-medium">{arrival}</div>
-        <div className="text-xs sm:text-sm text-gray-500">{arrStation}</div>
-      </div>
-
-      <div className="col-span-1 text-center px-0">
+      <div className="col-span-1 text-center">
         <span
-          className={`
-        text-xs sm:text-sm 
-        px-2 sm:px-3 py-0.5 sm:py-1 
-        rounded-full font-semibold 
-        ${getStatusClasses(status)}
-      `}
+          className={`px-2 py-0.5 rounded-full font-medium text-[11px] ${getStatusClasses(
+            status
+          )}`}
         >
           {status}
         </span>
       </div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2">
-        <div className="text-base sm:text-lg font-medium">{acType}</div>
-        <div className="text-xs sm:text-sm text-gray-500">{acReg}</div>
+      <div className="col-span-1 text-center">
+        <div className="font-medium">{acType}</div>
+        <div className="text-gray-500 text-[11px]">{acReg}</div>
       </div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2 text-sm sm:text-lg">
-        {groundTime}
-      </div>
+      <div className="col-span-1 text-center">{groundTime}</div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2 text-sm sm:text-lg">
-        {plan}
-      </div>
+      <div className="col-span-1 text-center">{plan}</div>
 
-      <div className="col-span-1 text-center px-1 sm:px-2 font-bold text-lg sm:text-2xl text-gray-800">
+      <div className="col-span-1 text-center font-bold text-gray-800">
         {paxTotal}
       </div>
 
-      <div className="col-span-4 text-center px-1 sm:px-2 ml-2 sm:ml-6">
-        <div className="grid grid-cols-2 gap-2 sm:gap-3">
-          <div className="bg-yellow-100 rounded p-1 sm:p-2">
-            <div className="text-[10px] sm:text-xs text-yellow-600 font-semibold">
+      <div className="col-span-4 text-center ml-2">
+        <div className="grid grid-cols-2 gap-2">
+          <div className="bg-yellow-100 rounded p-1">
+            <div className="text-[10px] text-yellow-600 font-semibold">
               First Class
             </div>
-            <div className="text-sm sm:text-lg font-bold text-gray-800">
-              {pax.first}
-            </div>
+            <div className="font-bold">{pax.first}</div>
           </div>
-          <div className="bg-blue-100 rounded p-1 sm:p-2">
-            <div className="text-[10px] sm:text-xs text-blue-600 font-semibold">
+          <div className="bg-blue-100 rounded p-1">
+            <div className="text-[10px] text-blue-600 font-semibold">
               Business Class
             </div>
-            <div className="text-sm sm:text-lg font-bold text-gray-800">
-              {pax.business}
-            </div>
+            <div className="font-bold">{pax.business}</div>
           </div>
-          <div className="bg-purple-100 rounded p-1 sm:p-2">
-            <div className="text-[10px] sm:text-xs text-purple-600 font-semibold">
+          <div className="bg-purple-100 rounded p-1">
+            <div className="text-[10px] text-purple-600 font-semibold">
               Premium Economy
             </div>
-            <div className="text-sm sm:text-lg font-bold text-gray-800">
-              {pax.premium}
-            </div>
+            <div className="font-bold">{pax.premium}</div>
           </div>
-          <div className="bg-green-100 rounded p-1 sm:p-2">
-            <div className="text-[10px] sm:text-xs text-green-600 font-semibold">
+          <div className="bg-green-100 rounded p-1">
+            <div className="text-[10px] text-green-600 font-semibold">
               Economy
             </div>
-            <div className="text-sm sm:text-lg font-bold text-gray-800">
-              {pax.economy}
-            </div>
+            <div className="font-bold">{pax.economy}</div>
           </div>
         </div>
       </div>
 
-      <div className="col-span-4 flex gap-3 sm:gap-4 justify-center text-gray-500 px-1 sm:px-2 text-lg sm:text-xl">
+      <div className="col-span-4 flex gap-2 justify-center text-gray-500 text-base">
         <FontAwesomeIcon
           icon={faExclamationTriangle}
-          className="hover:text-yellow-500 cursor-pointer transition-colors"
+          className="hover:text-yellow-500 cursor-pointer"
         />
         <FontAwesomeIcon
           icon={faUtensils}
-          className="hover:text-blue-400 cursor-pointer transition-colors"
+          className="hover:text-blue-400 cursor-pointer"
         />
         <FontAwesomeIcon
           icon={faClipboardList}
-          className="hover:text-green-500 cursor-pointer transition-colors"
+          className="hover:text-green-500 cursor-pointer"
         />
         <FontAwesomeIcon
           icon={faSuitcaseRolling}
-          className="hover:text-purple-500 cursor-pointer transition-colors"
+          className="hover:text-purple-500 cursor-pointer"
         />
         <FontAwesomeIcon
           icon={faPlane}
-          className="hover:text-blue-500 cursor-pointer transition-colors"
+          className="hover:text-blue-500 cursor-pointer"
         />
         <div className="relative" ref={menuRef}>
           <FontAwesomeIcon
             icon={faCog}
-            className="text-red-500 hover:text-red-700 cursor-pointer transition-colors"
+            className="text-red-500 hover:text-red-700 cursor-pointer"
             onClick={() => setOpen((prev) => !prev)}
           />
           {open && (
-            <div className="absolute right-0 mt-2 w-40 sm:w-44 bg-white border border-gray-200 rounded-lg shadow-lg z-50 animate-fadeIn">
-              <ul className="text-sm sm:text-base text-gray-700">
+            <div className="absolute right-0 mt-1 w-36 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+              <ul className="text-xs text-gray-700">
                 <li
-                  className="px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer"
+                  className="px-3 py-1.5 flex items-center gap-2 hover:bg-gray-100 cursor-pointer"
                   onClick={handleFlightDetails}
                 >
                   <FontAwesomeIcon icon={faEye} className="text-blue-400" />
-                  Flight Details
+                  Details
                 </li>
-                <li className="px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer">
+                <li className="px-3 py-1.5 flex items-center gap-2 hover:bg-gray-100 cursor-pointer">
                   <FontAwesomeIcon icon={faPen} className="text-green-500" />
-                  Edit Flight
+                  Edit
                 </li>
-                <li className="px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-2 hover:bg-gray-100 cursor-pointer">
+                <li className="px-3 py-1.5 flex items-center gap-2 hover:bg-gray-100 cursor-pointer">
                   <FontAwesomeIcon
                     icon={faHistory}
                     className="text-purple-500"
                   />
-                  Flight History
+                  History
                 </li>
               </ul>
             </div>
