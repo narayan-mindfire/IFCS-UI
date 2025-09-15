@@ -49,42 +49,50 @@ const GalleyLabel: FC<LabelProps> = ({ preparation, flight }) => {
   const airlineLogoUrl = `https://content.airhex.com/content/logos/airlines_${flight.airlineCode}_200_60_r.png`;
 
   return (
-    <div className="border-2 border-black w-[340px] text-black font-sans bg-white">
+    <div className="border-2 border-black text-black font-sans bg-white w-full max-w-[240px] md:max-w-[340px]">
+      {/* Header */}
       <div className="flex items-center justify-between border-b-2 border-black px-2 py-2">
-        <div className="flex flex-col items-start w-20">
+        {/* Airline + Flight Number */}
+        <div className="flex flex-col items-start w-16 md:w-20">
           <img
             src={airlineLogoUrl}
             alt={`${flight.airlineCode} logo`}
-            className="h-8 object-contain mb-2"
+            className="h-6 md:h-8 object-contain mb-2"
           />
-          <div className="bg-black text-white px-2 py-1 text-lg font-bold w-full text-center">
+          <div className="bg-black text-white px-1 md:px-2 py-1 text-base md:text-lg font-bold w-full text-center">
             {flight.flightNumber}
           </div>
         </div>
 
+        {/* QR Code */}
         <div className="flex-1 flex justify-center">
-          <QRCodeSVG value={qrData} size={120} />
+          <QRCodeSVG value={qrData} size={90} className="md:size-[120px]" />
         </div>
 
-        <div className="flex flex-col items-end w-20">
-          <span className="text-sm font-bold mb-2">{flight.date}</span>
-          <div className="bg-black text-white px-2 py-1 text-lg font-bold w-full text-center">
+        {/* Date + Stowage */}
+        <div className="flex flex-col items-end w-16 md:w-20">
+          <span className="text-xs md:text-sm font-bold mb-2">
+            {flight.date}
+          </span>
+          <div className="bg-black text-white px-1 md:px-2 py-1 text-base md:text-lg font-bold w-full text-center">
             {preparation.stowage}
           </div>
         </div>
       </div>
 
-      <div className="border-b-2 border-black px-2 py-1 text-center text-sm">
-        <div className="font-medium">
+      {/* Flight Info */}
+      <div className="border-b-2 border-black px-2 py-1 text-center text-xs md:text-sm">
+        <div className="font-medium truncate">
           {flight.acReg} | {flight.route} | {preparation.equipment}
         </div>
-        <div className="mt-1 text-xs">
+        <div className="mt-1 text-[10px] md:text-xs">
           {flight.depStation} / {flight.arrStation}
         </div>
       </div>
 
-      <div className="px-4 py-8 text-center">
-        <div className="font-bold text-4xl leading-tight">
+      {/* Carrier Big Label */}
+      <div className="px-4 py-6 md:py-8 text-center">
+        <div className="font-bold text-2xl md:text-4xl leading-tight">
           {preparation.carrier}
         </div>
       </div>

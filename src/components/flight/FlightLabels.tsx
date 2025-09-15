@@ -63,13 +63,14 @@ const FlightLabels = () => {
   });
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="min-h-screen bg-gray-100 p-4 sm:p-6 md:p-8">
+      {/* Tab Buttons */}
       <div className="flex mb-4">
         <button
           onClick={() => setActiveTab("LABELS")}
-          className={`px-6 py-2 rounded-l-lg font-medium text-sm ${
+          className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-l-lg font-medium text-sm transition-colors duration-200 ${
             activeTab === "LABELS"
-              ? "bg-gray-400 text-black"
+              ? "bg-gray-400 text-black shadow-md"
               : "bg-gray-200 text-gray-600 hover:bg-gray-300"
           }`}
         >
@@ -77,9 +78,9 @@ const FlightLabels = () => {
         </button>
         <button
           onClick={() => setActiveTab("REPORTS")}
-          className={`px-6 py-2 rounded-r-lg font-medium text-sm ${
+          className={`flex-1 sm:flex-none px-4 sm:px-6 py-2 rounded-r-lg font-medium text-sm transition-colors duration-200 ${
             activeTab === "REPORTS"
-              ? "bg-gray-400 text-black"
+              ? "bg-gray-400 text-black shadow-md"
               : "bg-gray-200 text-gray-600 hover:bg-gray-300"
           }`}
         >
@@ -90,24 +91,34 @@ const FlightLabels = () => {
       <div className="text-xs text-gray-500 mb-6">Generated {currentDate}</div>
 
       {activeTab === "LABELS" && (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-lg p-4">
-            <h3 className="text-sm font-medium text-gray-700 mb-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+          {/* Outbound Labels Section */}
+          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+            <h3 className="text-base font-semibold text-gray-800 mb-4 border-b pb-2">
               Print Outbound Labels
             </h3>
 
             <div className="space-y-4">
               {outboundPreparations.map((prep, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <div className="flex-shrink-0">
+                <div
+                  key={index}
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 border rounded-md transition-shadow hover:shadow-sm"
+                >
+                  <div className="flex-shrink-0 mb-3 sm:mb-0">
                     <GalleyLabel preparation={prep} flight={sampleFlight} />
                   </div>
-                  <div className="ml-4 flex-1">
+                  <div className="sm:ml-4 flex-1 w-full sm:w-auto">
                     <div className="font-medium text-gray-800">
                       {prep.equipment}
                     </div>
                     <div className="text-sm text-gray-500 mt-1">
-                      Stowage: {prep.stowage} | Prepared by: {prep.preparedBy}
+                      <span className="block sm:inline">
+                        Stowage: {prep.stowage}
+                      </span>
+                      <span className="hidden sm:inline"> | </span>
+                      <span className="block sm:inline">
+                        Prepared by: {prep.preparedBy}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -115,15 +126,19 @@ const FlightLabels = () => {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg p-4">
-            <h3 className="text-sm font-medium text-gray-700 mb-4">
+          {/* Inbound Labels Section */}
+          <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+            <h3 className="text-base font-semibold text-gray-800 mb-4 border-b pb-2">
               Print Inbound Labels
             </h3>
 
             <div className="space-y-4">
               {inboundPreparations.map((prep, index) => (
-                <div key={index} className="flex items-center justify-between">
-                  <div className="flex-shrink-0">
+                <div
+                  key={index}
+                  className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-3 border rounded-md transition-shadow hover:shadow-sm"
+                >
+                  <div className="flex-shrink-0 mb-3 sm:mb-0">
                     <GalleyLabel
                       preparation={{
                         ...prep,
@@ -135,12 +150,18 @@ const FlightLabels = () => {
                       flight={sampleFlight}
                     />
                   </div>
-                  <div className="ml-4 flex-1">
+                  <div className="sm:ml-4 flex-1 w-full sm:w-auto">
                     <div className="font-medium text-gray-800">
                       {prep.equipment}
                     </div>
                     <div className="text-sm text-gray-500 mt-1">
-                      Stowage: {prep.stowage} | Prepared by: {prep.preparedBy}
+                      <span className="block sm:inline">
+                        Stowage: {prep.stowage}
+                      </span>
+                      <span className="hidden sm:inline"> | </span>
+                      <span className="block sm:inline">
+                        Prepared by: {prep.preparedBy}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -151,7 +172,7 @@ const FlightLabels = () => {
       )}
 
       {activeTab === "REPORTS" && (
-        <div className="bg-white rounded-lg p-8 text-center">
+        <div className="bg-white rounded-lg shadow-md p-6 sm:p-8 text-center">
           <div className="text-gray-500">
             <h3 className="text-lg font-medium mb-2">Reports Section</h3>
             <p>
